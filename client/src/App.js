@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <h1>{this.state.companies}</h1>
+        <h1 className='tw-text-imagine'>{this.state.companies}</h1>
       </div>
     )
   }
