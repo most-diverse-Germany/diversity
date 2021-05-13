@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 import './App.css'
+import Styleguide from './components/Styleguide'
+
 const axios = require('axios')
 
 class App extends Component {
@@ -23,7 +26,8 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <h1 className='tw-text-imagine'>{this.state.companies}</h1>
+        <h1 className='tw-text-blue-400'>{this.state.companies}</h1>
+        <Route exact path='/styleguide' component={Styleguide} />
       </div>
     )
   }
