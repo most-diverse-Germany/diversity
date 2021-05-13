@@ -15,6 +15,8 @@ class App extends Component {
     axios
       .get('/api/companies')
       .then((response) => {
+        console.log(response.data);
+        
         this.setState({
           companies: response.data,
         })
