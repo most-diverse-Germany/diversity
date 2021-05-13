@@ -1,0 +1,18 @@
+[
+  {
+    "company_name": "1aim",
+    "url_linkedin": "https://www.linkedin.com/company/1aim/about/",
+    "number_employees": 10,
+    "diversity_score": 3269,
+    "growth_score": 2.5,
+    "opportunity_score": 1.5
+  },
+  {
+    "company_name": "21Diamonds",
+    "url_linkedin": "https://www.linkedin.com/company/21diamonds-india/",
+    "number_employees": 16,
+    "diversity_score": 1932,
+    "growth_score": 1.1,
+    "opportunity_score": 3.2
+  }
+]
