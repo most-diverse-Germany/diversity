@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <h1 className='tw-text-blue-400'>{this.state.companies}</h1>
+        <CompaniesList companies={this.state.companies} />
         <Route exact path='/styleguide' component={Styleguide} />
         <Route exact path='/companiestest' component={CompaniesList} />
       </div>
