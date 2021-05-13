@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
+import './App.css'
+import Styleguide from './components/Styleguide'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const axios = require('axios')
+
+class App extends Component {
+  state = {
+    companies: [],
+  }
+
+  componentDidMount() {
+    axios
+      .get('/api/companies')
+      .then((response) => {
+        this.setState({
+          companies: response.data,
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        <h1 className='tw-text-blue-400'>{this.state.companies}</h1>
+        <Route exact path='/styleguide' component={Styleguide} />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
