@@ -1,7 +1,19 @@
-const router = require('express').Router()
+const router = require('express').Router();
+const Company = require('../models/Company.model.js');
 
 router.get('/', (req, res, next) => {
-  res.status(200).json('Hello World!')
+
+  console.log('hello');
+  
+
+  Company.find()
+    .then(companies => {
+      console.log(companies[0]);
+      
+      res.status(200).json(companies);
+    })
+    .catch(err => console.log(err)
+    )
 })
 
 // You put the next routes here 👇
