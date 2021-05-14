@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import CompanyRow from './CompanyRow'
+import React, { Component } from 'react';
+import CompanyRow from './CompanyRow';
+
 
 export class CompaniesList extends Component {
   render() {
@@ -22,7 +23,6 @@ export class CompaniesList extends Component {
     return (
       <>
         <div>
-        
         {top100.map((company) => (
           <CompanyRow company={company} />
         ))}
