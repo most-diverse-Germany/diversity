@@ -10,7 +10,7 @@ export default class Styleguide extends Component {
         <br />
         <Component1 />
         <br />
-        <h1 class='tw-text-imagine'>Imagine Foundation Style Guide</h1>
+        <h1 class='tw-text-imagineText'>Imagine Foundation Style Guide</h1>
         <br />
         <h1>h1: Imagine Foundation</h1>
         <br />
