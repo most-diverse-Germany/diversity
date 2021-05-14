@@ -3,25 +3,30 @@ import CompanyRow from './CompanyRow'
 
 export class CompaniesList extends Component {
   render() {
-    // const companyList = companies.map((company, index) => {
-    //   return (
-    //     <div key={index}>
-    //         <h2>Name: {company.company_name}</h2>
-    //         <p>Number of employees: {company.number_employees}</p>
+    
+    //THIS IS THE LOGIC TO CALCULATE THE TOP 100
+    const top100 = this.props.companies.sort((a, b) => {
+      let aAvg = (a.diversity_total + a.growth_score + a.opportunity_score) / 3;
+      let bAvg = (b.diversity_total + b.growth_score + b.opportunity_score) / 3;
+      if (aAvg > bAvg) {
+        return -1;
+      }
+      if (aAvg < bAvg) {
+        return 1;
+      }
+      return 0;      
+      }).splice(0,100);
 
-    //         {/* if statement */}
-    //         {company.diversity_score > 1000 && <p>Score: {company.diversity_score}</p>}
-    //         <hr/>
-    //     </div>
-    // )
-
-    // })
-
+    console.log(top100);
+    
     return (
       <>
-        {this.props.companies.map((company) => (
+        <div>
+        
+        {top100.map((company) => (
           <CompanyRow company={company} />
         ))}
+        </div>  
       </>
     )
   }
