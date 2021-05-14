@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 // You put the next routes here 👇
 // example: router.use("/auth", authRoutes)
 
-module.exports = router
+
 
 // const express = require('express');
 // const router = express.Router();
@@ -37,14 +37,25 @@ module.exports = router
 // });
 
 // router.get('/:id', (req, res, next) => {
-//   Celebrity.findById(req.params.id)
-//     .then(celebrity => {
-//       res.render('celebrities/show.hbs', { celebrity });
+//   Company.findById(req.params.id)
+//     .then(company => {
+//       res.render('celebrities/show.hbs', { company });
 //     })
 //     .catch(err => {
 //       next(err);
 //     });
 // });
+
+router.get('/:id', (req, res, next) => {
+  Company.findById(req.params.id)
+    .then(company => {
+      if (!company) {
+        res.status(404).json(company);
+      } else {
+        res.status(200).json(company);
+      }
+    })
+});
 
 // router.post('/', (req, res, next) => {
 //   const { name, occupation, catchPhrase } = req.body;
@@ -89,4 +100,5 @@ module.exports = router
 //     });
 // });
 
-// module.exports = router;
+module.exports = router;
+

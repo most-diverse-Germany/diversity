@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CompanyRow from './CompanyRow'
 import { Link } from 'react-router-dom';
 
+
 export class CompaniesList extends Component {
 
   state = {
@@ -31,6 +32,7 @@ export class CompaniesList extends Component {
     
     
     return (
+      
       <div >
         
         {top100.map((company) => (
