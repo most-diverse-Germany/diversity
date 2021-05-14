@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     companies: []
   }
+
   componentDidMount() {
     axios
       .get('/api/companies')

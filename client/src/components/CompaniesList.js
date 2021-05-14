@@ -9,8 +9,9 @@ export class CompaniesList extends Component {
   }
 
   clickHandler = () => {
+    console.log('click')
     this.setState((state) => ({
-      displayAll: true
+      displayAll: !this.state.displayAll
     }))
   }
 
@@ -28,15 +29,22 @@ export class CompaniesList extends Component {
       return 0;      
       }).splice(0, this.state.displayAll ? 100 : 10);
     
+    
     return (
-      <div >      
+      <div >
+        
         {top100.map((company) => (
           <Link to={`/company/${company._id}`}>
             <CompanyRow company={company} />
           </Link>
         ))}
+
         {this.state.displayAll === false &&
-          <button onclick={this.clickHandler} className="tw-text-imagineText tw-object-left">see more</button>}
+          <button onClick={this.clickHandler} className="tw-text-imagineText tw-object-left">see more</button>}
+        
+        {this.state.displayAll === true &&
+          <button onClick={this.clickHandler} className="tw-text-imagineText tw-object-left">see less</button>}
+        
       </div>
     )
   }
