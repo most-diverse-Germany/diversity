@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
+
+
 export default class Chart extends Component {
 
   constructor(props){
     super(props)
+    
     this.state = {
       chartData:{
         labels: [
@@ -14,8 +17,7 @@ export default class Chart extends Component {
       ],
       datasets: [
           {
-              data: [3.3, 1.1, 2.3],
-              // data: [props.company.diversity_total, props.company.growth_score, props.company.opportunity_score],
+               data: [this.props.company.diversity_total, this.props.company.growth_score, this.props.company.opportunity_score],
             
               backgroundColor: [
                   "#E0296C",
@@ -26,21 +28,41 @@ export default class Chart extends Component {
                   "#EC6A8E",
                   "#56B39E",
                   "#F7A559"
-              ]
+              ],
+              borderWidth: 2,
+              width:100
           }]
       }
     }
   }
+
+ 
   render() {
-    console.log(this.props.company)
+    //  console.log(this.state.props.company)
+    
     return (
-      <div className="chart" style={{width:"50%"}}>
+     
+      <div className="chart" style={{width:"100%",height:"100%"}}>
+
           <Doughnut
             data={this.state.chartData}
-            width={10}
-            height={50}
-            options={{ rotation: 85 * Math.PI,
-      circumference: 60 * Math.PI }}
+            width={100}
+	          eight={50}
+            
+            
+
+            options={{
+             
+               responsive: true,
+                maintainAspectRatio: false,
+                rotation: 86 * Math.PI,
+                circumference: 57 * Math.PI,
+                 legend: {
+                   display: false,
+                   position: 'right'
+                 }
+                }}   
+             
           />
         
       </div>

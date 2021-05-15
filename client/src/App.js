@@ -4,6 +4,7 @@ import './App.css'
 import Styleguide from './components/Styleguide'
 import CompaniesList from './components/CompaniesList'
 import Signup from './components/Signup'
+import CompanyDetails from './components/CompanyDetails'
 
 const axios = require('axios')
 
@@ -34,11 +35,12 @@ function App(props) {
       <Switch>
         <Route exact path='/'>
           <Signup user={user} setUser={setUser} />
-          {/* <CompaniesList companies={companies} /> */}
+           <CompaniesList companies={companies} />
         </Route>
         <Route exact path='/styleguide'>
           <Styleguide />
         </Route>
+        <Route exact path="/companies/:id" component={CompanyDetails} />
       </Switch>
     </div>
   )
