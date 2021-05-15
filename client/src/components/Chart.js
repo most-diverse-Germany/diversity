@@ -1,69 +1,50 @@
-import React, { Component } from 'react';
-import { Doughnut } from 'react-chartjs-2';
-
-
+import React, { Component } from 'react'
+import { Doughnut } from 'react-chartjs-2'
 
 export default class Chart extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props)
-    
+
     this.state = {
-      chartData:{
-        labels: [
-          "Diversity",
-          "Opportunity",
-          "Growth"
-      ],
-      datasets: [
+      chartData: {
+        labels: ['Diversity', 'Opportunity', 'Growth'],
+        datasets: [
           {
-               data: [this.props.company.diversity_total, this.props.company.growth_score, this.props.company.opportunity_score],
-            
-              backgroundColor: [
-                  "#E0296C",
-                  "#3C7695",
-                  "#954E8B"
-              ],
-              hoverBackgroundColor: [
-                  "#EC6A8E",
-                  "#56B39E",
-                  "#F7A559"
-              ],
-              borderWidth: 2
-          }]
-      }
+            data: [
+              this.props.company.diversity_total,
+              this.props.company.growth_score,
+              this.props.company.opportunity_score,
+            ],
+
+            backgroundColor: ['#E0296C', '#3C7695', '#954E8B'],
+            hoverBackgroundColor: ['#EC6A8E', '#56B39E', '#F7A559'],
+            borderWidth: 2,
+          },
+        ],
+      },
     }
   }
 
- 
   render() {
     //  console.log(this.state.props.company)
-    
+
     return (
-     
-      <div className="chart" style={{width:"100%",height:"100%"}}>
-
-          <Doughnut
-            data={this.state.chartData}
-            width={100}
-	          eight={50}
-            
-            
-
-            options={{
-             
-               responsive: true,
-                maintainAspectRatio: false,
-                rotation: 86 * Math.PI,
-                circumference: 57 * Math.PI,
-                 legend: {
-                   display: false,
-                   position: 'right'
-                 }
-                }}   
-             
-          />
-        
+      <div className='chart' style={{ width: '100%', height: '100%' }}>
+        <Doughnut
+          data={this.state.chartData}
+          width={100}
+          eight={50}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            rotation: 86 * Math.PI,
+            circumference: 57 * Math.PI,
+            legend: {
+              display: false,
+              position: 'right',
+            },
+          }}
+        />
       </div>
     )
   }
@@ -139,8 +120,6 @@ export default class Chart extends Component {
 
 // export default Chart
 
-
-
 /////////////////////////////////////////////////Example Ahmed////////////////////////
 // import React, { Component } from 'react';
 // import Chart from "chart.js";
@@ -155,9 +134,9 @@ export default class Chart extends Component {
 //     })
 //   }
 //   render() {
-//     if(this.state.myChartRef && this.props.symbolsPrice && this.props.portfolio.length !== 0) 
+//     if(this.state.myChartRef && this.props.symbolsPrice && this.props.portfolio.length !== 0)
 //     {
-//       const labels = Object.keys(this.props.symbolsPrice);  
+//       const labels = Object.keys(this.props.symbolsPrice);
 //       const valueArray = this.props.portfolio.map(element => {
 //         return ((element.count) * this.props.symbolsPrice[element.ticker])
 //       })
@@ -177,7 +156,7 @@ export default class Chart extends Component {
 //             datasets: [
 //                 {
 //                   data: data,
-//                   backgroundColor: colorsArray, 
+//                   backgroundColor: colorsArray,
 //                 }
 //             ],
 //             labels: labels
