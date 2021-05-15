@@ -42,10 +42,8 @@ module.exports = {
   plugins: [],
 }
 
-
-
 // {
-// imagineText: #525252 
+// imagineText: #525252
 // imagineRed: #e0296c
 // imaginePink: #ec6a8e
 // imagineGreen: #56b39e

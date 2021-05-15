@@ -1,50 +1,47 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import './App.css';
-import Styleguide from './components/Styleguide';
-import CompaniesList from './components/CompaniesList';
-import Chart from './components/Chart';
-import CompanyDetails from './components/CompanyDetails';
+import React, { useState, useEffect } from 'react'
+import { Route, Switch } from 'react-router-dom'
+import './App.css'
+import Styleguide from './components/Styleguide'
+import CompaniesList from './components/CompaniesList'
+import Signup from './components/Signup'
+
 const axios = require('axios')
 
-class App extends Component {
-  state = {
-    companies: []
-  }
-  componentDidMount() {
+function App(props) {
+  const [companies, setCompanies] = useState([])
+  const [user, setUser] = useState(props.user)
+
+  useEffect(() => {
     axios
       .get('/api/companies')
       .then((response) => {
-        this.setState({
-          companies: response.data,
-        })
+        setCompanies(response.data)
       })
       .catch((err) => {
         console.log(err)
       })
-  }
-  render() {
-    return (
-      <div className='App'>
-        <Switch>
-          <Route exact path='/'>
-            <CompaniesList companies={this.state.companies} />
-          </Route>
-          <Route exact path='/styleguide'>
-            <Styleguide />
-          </Route>
+  }, [])
 
-          <Route exact path='/chart'>
-            <Chart />
-          </Route>
-          {/* <Route exact path='/companies/:id'>
-          <CompanyDetails />
-          </Route>           */}
-          <Route exact path="/companies/:id" component={CompanyDetails} />
+  useEffect(() => {
+    setUser(props.user)
+  }, [props.user])
 
-        </Switch>
-      </div>
-    )
-  }
+  console.log(companies)
+
+  if (!companies) return <h1>Loading...</h1>
+  return (
+    <div className='App'>
+      <Switch>
+        <Route exact path='/'>
+          <Signup user={user} setUser={setUser} />
+          {/* <CompaniesList companies={companies} /> */}
+        </Route>
+        <Route exact path='/styleguide'>
+          <Styleguide />
+        </Route>
+      </Switch>
+    </div>
+  )
+  // }
 }
 export default App
