@@ -40,6 +40,8 @@ componentDidMount() {
   this.getData();
 }
 
+componentDidUpdate(prevProps) {
+  if (prevProps.company!== this.props.company) {
 
 
   render() {
