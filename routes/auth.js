@@ -92,24 +92,6 @@ router.post('/login', (req, res, next) => {
   })(req, res, next)
 })
 
-// // login with passport
-// router.post('/login', function (req, res, next) {
-//   passport.authenticate('local', function (err, user, info) {
-//     if (err) {
-//       return next(err)
-//     }
-//     if (!user) {
-//       return res.render('login', { loginErrorMessage: info.message })
-//     }
-//     req.logIn(user, function (err) {
-//       if (err) {
-//         return next(err)
-//       }
-//       return res.redirect('/account')
-//     })
-//   })(req, res, next)
-// })
-
 // this checks if we have a logged in user -> returns this user as json or null
 router.get('/loggedin', (req, res) => {
   console.log('this is the user from the session: ', req.user)

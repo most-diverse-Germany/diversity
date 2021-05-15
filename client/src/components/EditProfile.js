@@ -1,13 +1,33 @@
-import React, { useState } from 'react'
-import { signup } from '../services/auth'
+import React, { useState, useEffect } from 'react'
+import { update } from '../services/users'
 
-export default function Signup(props) {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [company, setCompany] = useState('')
-  const [password, setPassword] = useState('')
+export default function Editprofile(props) {
+  const [firstName, setFirstName] = useState(() => {
+    return props ? props.user.firstName : ''
+  })
+  const [lastName, setLastName] = useState(() => {
+    return props ? props.user.lastName : ''
+  })
+  const [email, setEmail] = useState(() => {
+    return props ? props.user.email : ''
+  })
+  const [company, setCompany] = useState(() => {
+    return props ? props.user.company : ''
+  })
+  const [password, setPassword] = useState(() => {
+    return props ? props.user.password : ''
+  })
+
   const [message, setMessage] = useState()
+
+  useEffect(() => {
+    console.log(password)
+    setFirstName(props.user.firstName)
+    setLastName(props.user.lastName)
+    setEmail(props.user.email)
+    setCompany(props.user.company)
+    // setId(props.user._id)
+  }, [props])
 
   const clearAllFields = () => {
     setMessage('')
@@ -18,20 +38,19 @@ export default function Signup(props) {
     setPassword('')
   }
 
-  const handleSignup = (e) => {
+  const handleEdit = (e) => {
     e.preventDefault()
-    signup(email, firstName, lastName, company, password).then((response) => {
-      if (response.message) {
-        console.log(response)
-        setMessage(response.message)
-      } else {
-        clearAllFields()
-        // we now put the user in the state of App.js
-        props.setUser(response)
-
-        // props.history.push('/xxx')
+    update(props.user._id, email, firstName, lastName, company, password).then(
+      (response) => {
+        if (response.message) {
+          setMessage(response.message)
+        } else {
+          setPassword('')
+          // we now put the user in the state of App.js
+          props.setUser(response)
+        }
       }
-    })
+    )
   }
 
   const style = {
@@ -39,12 +58,11 @@ export default function Signup(props) {
     label: 'tw-text-blue-600 tw-text-xs tw-text-left tw-leading-loose',
   }
 
-  if (props.user) return <></>
   return (
-    <div>
-      <div id='signup' className='tw-w-full md:tw-w-4/12 tw-px-5'>
-        <h1 className='tw-text-blue-600 tw-text-left'>Signup</h1>
-        <form className='tw-flex tw-flex-col' onSubmit={handleSignup}>
+    <>
+      <div id='editProfile' className='tw-w-full md:tw-w-4/12 tw-px-5'>
+        <h1 className='tw-text-blue-600 tw-text-left'>Edit your profile</h1>
+        <form className='tw-flex tw-flex-col' onSubmit={handleEdit}>
           <label className={style.label} htmlFor='firstName'>
             First Name
           </label>
@@ -109,11 +127,11 @@ export default function Signup(props) {
             className='tw-bg-yellow-500 tw-text-blue-600 tw-py-5 tw-mt-5 md:tw-w-1/2'
             type='submit'
           >
-            Sign Up
+            Save Edit
           </button>
           {message && <h3>{message}</h3>}
         </form>
       </div>
-    </div>
+    </>
   )
 }

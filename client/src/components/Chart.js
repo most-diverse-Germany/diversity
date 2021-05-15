@@ -1,48 +1,42 @@
-import React, { Component } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import React, { Component } from 'react'
+import { Doughnut } from 'react-chartjs-2'
 
 export default class Chart extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      chartData:{
-        labels: [
-          "Diversity",
-          "Opportunity",
-          "Growth"
-      ],
-      datasets: [
+      chartData: {
+        labels: ['Diversity', 'Opportunity', 'Growth'],
+        datasets: [
           {
-              data: [3.3, 1.1, 2.3],
-              // data: [props.company.diversity_total, props.company.growth_score, props.company.opportunity_score],
-            
-              backgroundColor: [
-                  "#E0296C",
-                  "#3C7695",
-                  "#954E8B"
-              ],
-              hoverBackgroundColor: [
-                  "#EC6A8E",
-                  "#56B39E",
-                  "#F7A559"
-              ]
-          }]
-      }
+            data: [3.3, 1.1, 2.3],
+            // data: [props.company.diversity_total, props.company.growth_score, props.company.opportunity_score],
+
+            backgroundColor: [
+              '#E0296C', // bgColor1
+              '#3C7695',
+              '#954E8B',
+            ],
+            hoverBackgroundColor: [
+              '#EC6A8E', // bgHoverColor1
+              '#56B39E',
+              '#F7A559',
+            ],
+          },
+        ],
+      },
     }
   }
   render() {
     console.log(this.props.company)
     return (
-      <div className="chart" style={{width:"50%"}}>
-          <Doughnut
-            data={this.state.chartData}
-            width={10}
-            height={50}
-            options={{ rotation: 85 * Math.PI,
-      circumference: 60 * Math.PI }}
-          />
-        
+      <div className='chart' style={{ width: '50%' }}>
+        <Doughnut
+          data={this.state.chartData}
+          width={10}
+          height={50}
+          options={{ rotation: 85 * Math.PI, circumference: 60 * Math.PI }}
+        />
       </div>
     )
   }
@@ -118,8 +112,6 @@ export default class Chart extends Component {
 
 // export default Chart
 
-
-
 /////////////////////////////////////////////////Example Ahmed////////////////////////
 // import React, { Component } from 'react';
 // import Chart from "chart.js";
@@ -134,9 +126,9 @@ export default class Chart extends Component {
 //     })
 //   }
 //   render() {
-//     if(this.state.myChartRef && this.props.symbolsPrice && this.props.portfolio.length !== 0) 
+//     if(this.state.myChartRef && this.props.symbolsPrice && this.props.portfolio.length !== 0)
 //     {
-//       const labels = Object.keys(this.props.symbolsPrice);  
+//       const labels = Object.keys(this.props.symbolsPrice);
 //       const valueArray = this.props.portfolio.map(element => {
 //         return ((element.count) * this.props.symbolsPrice[element.ticker])
 //       })
@@ -156,7 +148,7 @@ export default class Chart extends Component {
 //             datasets: [
 //                 {
 //                   data: data,
-//                   backgroundColor: colorsArray, 
+//                   backgroundColor: colorsArray,
 //                 }
 //             ],
 //             labels: labels

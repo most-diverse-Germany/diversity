@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Component1 from './Component1'
+import TransButton from './TransButton'
 
 export default class Styleguide extends Component {
   render() {
@@ -8,6 +9,14 @@ export default class Styleguide extends Component {
         <h1>React-Spring Components</h1>
         <br />
         <Component1 />
+        <TransButton
+          text={'Button'}
+          size={'tw-w-4/12 tw-h-12'}
+          backgroundColor={'#f59e0b'}
+          fillColor={'#2563eb'}
+          // textColor={'#272727'}
+          textColor={'white'}
+        />
         <br />
         <h1 class='tw-text-imagineText'>Imagine Foundation Style Guide</h1>
         <br />
