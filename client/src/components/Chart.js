@@ -29,8 +29,7 @@ export default class Chart extends Component {
                   "#56B39E",
                   "#F7A559"
               ],
-              borderWidth: 2,
-              width:100
+              borderWidth: 2
           }]
       }
     }

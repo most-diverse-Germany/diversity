@@ -43,12 +43,7 @@ componentDidMount() {
 componentDidUpdate(prevProps) {
   if (prevProps.company!== this.props.company) {
 
-   let {company} = this.state;
-   company.datasets[0].data = this.props.company
-   this.setState({company});
 
-  }
-}
   render() {
     if(this.state.dataFetched) {
       console.log('CompanyDetails',this.state.company)
@@ -65,3 +60,4 @@ componentDidUpdate(prevProps) {
 
   }
 }
+

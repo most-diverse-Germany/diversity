@@ -35,7 +35,7 @@ function App(props) {
       <Switch>
         <Route exact path='/'>
           <Signup user={user} setUser={setUser} />
-           <CompaniesList companies={companies} />
+          <CompaniesList companies={companies} />
         </Route>
         <Route exact path='/styleguide'>
           <Styleguide />
