@@ -36,7 +36,7 @@ export class CompaniesList extends Component {
       <div >
         
         {top100.map((company) => (
-          <Link to={`/company/${company._id}`}>
+          <Link to={`/companies/${company._id}`}>
             <CompanyRow company={company} />
           </Link>
         ))}

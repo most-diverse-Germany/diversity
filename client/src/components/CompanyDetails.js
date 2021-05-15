@@ -9,6 +9,7 @@ export default class CompanyDetails extends Component {
     super(props)
     this.state = {
       company: {},
+      diversityScore: {},
       dataFetched: false
     };
   }
@@ -17,7 +18,7 @@ export default class CompanyDetails extends Component {
    
     axios.get(`/api/companies/${this.props.match.params.id}`)
     .then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       this.setState({
         company: response.data,
         dataFetched: true
@@ -40,14 +41,15 @@ componentDidMount() {
 }
 
 
+
   render() {
     if(this.state.dataFetched) {
-      console.log(this.state.company)
+      console.log('CompanyDetails',this.state.company)
       return (
         
         <div>
            <h1>Name: {this.state.company.company_name}</h1>
-           <Chart company={this.company} /> 
+           <Chart company={this.state.company} /> 
         </div>
       )
     } else {
@@ -56,3 +58,4 @@ componentDidMount() {
 
   }
 }
+
