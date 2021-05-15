@@ -53,12 +53,14 @@ function App(props) {
           {user && <EditProfile user={user} setUser={setUser} />}
 
           {/* <CompaniesList companies={companies} /> */}
+          <CompaniesList companies={companies} />
         </Route>
         {/* is it possible to do id param with new syntax? */}
         <Route exact path='/companies/:id' component={CompanyDetails} />
         <Route exact path='/styleguide'>
           <Styleguide />
         </Route>
+        <Route exact path='/companies/:id' component={CompanyDetails} />
       </Switch>
     </div>
   )
