@@ -9,7 +9,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        imagine: {
+        imaginepink: {
           DEFAULT: '#e0296c',
         },
       },

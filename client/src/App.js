@@ -1,38 +1,48 @@
-import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import Styleguide from './components/Styleguide'
 import CompaniesList from './components/CompaniesList'
+import Signup from './components/Signup'
 
 const axios = require('axios')
 
-class App extends Component {
-  state = {
-    companies: [],
-  }
+function App(props) {
+  const [companies, setCompanies] = useState([])
+  const [user, setUser] = useState(props.user)
 
-  componentDidMount() {
+  useEffect(() => {
     axios
       .get('/api/companies')
       .then((response) => {
-        this.setState({
-          companies: response.data,
-        })
+        setCompanies(response.data)
       })
       .catch((err) => {
         console.log(err)
       })
-  }
+  }, [])
 
-  render() {
-    return (
-      <div className='App'>
-        <CompaniesList companies={this.state.companies} />
-        <Route exact path='/styleguide' component={Styleguide} />
-        <Route exact path='/companiestest' component={CompaniesList} />
-      </div>
-    )
-  }
+  useEffect(() => {
+    setUser(props.user)
+  }, [props.user])
+
+  console.log(companies)
+
+  if (!companies) return <h1>Loading...</h1>
+  return (
+    <div className='App'>
+      <Switch>
+        <Route exact path='/'>
+          <Signup user={user} setUser={setUser} />
+          {/* <CompaniesList companies={companies} /> */}
+        </Route>
+        <Route exact path='/styleguide'>
+          <Styleguide />
+        </Route>
+      </Switch>
+    </div>
+  )
+  // }
 }
 
 export default App
