@@ -9,8 +9,29 @@ module.exports = {
     },
     extend: {
       colors: {
-        imaginepink: {
+        imagineText: {
+          DEFAULT: '#525252',
+        },
+        imagineRed: {
           DEFAULT: '#e0296c',
+        },
+        imaginePink: {
+          DEFAULT: '#ec6a8e',
+        },
+        imagineGreen: {
+          DEFAULT: '#56b39e',
+        },
+        imagineBlue: {
+          DEFAULT: '#3c7695',
+        },
+        imaginePurple: {
+          DEFAULT: '#954e8b',
+        },
+        imagineYellow: {
+          DEFAULT: '#f7a559',
+        },
+        imagineLight: {
+          DEFAULT: '#fce7cc',
         },
       },
     },
@@ -20,3 +41,14 @@ module.exports = {
   },
   plugins: [],
 }
+
+// {
+// imagineText: #525252
+// imagineRed: #e0296c
+// imaginePink: #ec6a8e
+// imagineGreen: #56b39e
+// imagineBlue: #3c7695
+// imaginePurple: #954e8b
+// imagineYellow: #f7a559
+// imagineLight: #fce7cc
+// }
