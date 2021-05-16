@@ -1,67 +1,61 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Chart from './Chart.js';
-import CompanyTable from './CompanyTable.js';
-
+import React, { Component } from 'react'
+import axios from 'axios'
+import Chart from './Chart.js'
+import CompanyTable from './CompanyTable.js'
 
 export default class CompanyDetails extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
       company: {},
       diversityScore: {},
-      dataFetched: false
-    };
+      dataFetched: false,
+    }
   }
-  
+
   getData = () => {
-   
-    axios.get(`/api/companies/${this.props.match.params.id}`)
-    .then(response => {
-      // console.log(response.data);
-      this.setState({
-        company: response.data,
-        dataFetched: true
-        // this unsets the flag when the data is available
-        // dataRequested: false
-      })
-    })
-    .catch(err => {
-      console.log(err);
-      if (err.response.status === 404) {
+    axios
+      .get(`/api/companies/${this.props.match.params.id}`)
+      .then((response) => {
+        // console.log(response.data);
         this.setState({
-          error: 'Not found 🤷‍♀️🤷‍♂️'
+          company: response.data,
+          dataFetched: true,
+          // this unsets the flag when the data is available
+          // dataRequested: false
         })
-      }
-    })
-}
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err.response.status === 404) {
+          this.setState({
+            error: 'Not found 🤷‍♀️🤷‍♂️',
+          })
+        }
+      })
+  }
 
   componentDidMount() {
     this.getData()
   }
 
-render() {
-  if(this.state.dataFetched) {
-    console.log('CompanyDetails',this.state.company)
-    return (
-      <>
-      <div className="table-auto">
-         <h1>Name: {this.state.company.company_name}</h1>
-         <Chart company={this.state.company} /> 
-      </div>
-      
-      <div>
-      <CompanyTable company={this.state.company} />
-      </div>
-      </>
+  render() {
+    if (this.state.dataFetched) {
+      console.log('CompanyDetails', this.state.company)
+      return (
+        <>
+          <div className='table-auto'>
+            <h1>Name: {this.state.company.company_name}</h1>
+            <Chart company={this.state.company} />
+          </div>
 
-    )
-  } else {
-    return(null);
+          <div>
+            <CompanyTable company={this.state.company} />
+          </div>
+        </>
+      )
+    } else {
+      return null
+    }
   }
-
 }
-  
-}
-

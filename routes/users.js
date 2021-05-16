@@ -9,6 +9,17 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 
 router.put('/:id', (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    res.status(500).send({ error: 'Logged out. Please log-in.' })
+  }
+  // check if the logged in user has permission to update
+  if (!(req.params.id === req.session.passport.user)) {
+    res
+      .status(400)
+      .json({ message: 'You are not allowed to update this profile.' })
+    return
+  }
+
   console.log('put')
   const { email, firstName, lastName, company, password } = req.body
 
@@ -44,14 +55,6 @@ router.put('/:id', (req, res, next) => {
 
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' })
-    return
-  }
-
-  // check if the logged in user has permission to update
-  if (!(req.params.id === req.session.passport.user)) {
-    res
-      .status(400)
-      .json({ message: 'You are not allowed to update this profile.' })
     return
   }
 

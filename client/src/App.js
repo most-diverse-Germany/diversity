@@ -9,12 +9,16 @@ import EditProfile from './components/EditProfile'
 import Logout from './components/Logout'
 import Login from './components/Login'
 import Or from './components/Or'
+import RegisterUserCompany from './components/RegisterUserCompany'
+import UserCompany from './components/UserCompany'
+import { getUserCompaniesFromUser } from './services/userCompanies'
 
 const axios = require('axios')
 
 function App(props) {
   const [companies, setCompanies] = useState([])
   const [user, setUser] = useState(props.user)
+  const [userCompany, setUserCompany] = useState()
 
   useEffect(() => {
     axios
@@ -30,6 +34,17 @@ function App(props) {
   useEffect(() => {
     setUser(props.user)
   }, [props.user])
+
+  useEffect(() => {
+    if (user) {
+      getUserCompaniesFromUser(user._id).then((userCompaniesFromDB) => {
+        // console.log(userCompaniesFromDB[0])
+        setUserCompany(userCompaniesFromDB[0])
+      })
+    } else {
+      // setUserCompany(null)
+    }
+  }, [user])
 
   console.log(companies)
 
@@ -51,12 +66,13 @@ function App(props) {
           redirectPath='/'
         /> */}
           {user && <EditProfile user={user} setUser={setUser} />}
+          {user && <RegisterUserCompany setUserCompany={setUserCompany} />}
+          {userCompany && <UserCompany userCompany={userCompany} />}
 
           {/* <CompaniesList companies={companies} /> */}
-          <CompaniesList companies={companies} />
         </Route>
         {/* is it possible to do id param with new syntax? */}
-        <Route exact path='/companies/:id' component={CompanyDetails} />
+        {/* <Route exact path='/companies/:id' component={CompanyDetails} /> */}
         <Route exact path='/styleguide'>
           <Styleguide />
         </Route>
