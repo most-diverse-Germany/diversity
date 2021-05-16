@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 
-export default class Chart extends Component {
+export default class Chart extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -28,22 +28,96 @@ export default class Chart extends Component {
   render() {
     //  console.log(this.state.props.company)
 
+   const options={
+      responsive: true,
+      maintainAspectRatio: false,
+      rotation: 86 * Math.PI,
+      circumference: 57 * Math.PI,
+      legend: {
+        display: false,
+        position: 'right',
+      },
+      tooltips: {
+            backgroundColor: "rgba(0,0,0,0.8)",
+            bodyAlign: "left",
+            bodyFontColor: "#fff",
+            bodySpacing: 2,
+            borderColor: "rgba(0,0,0,0)",
+            borderWidth: 0,
+            //callbacks: {beforeTitle: ƒ, title: ƒ, afterTitle: ƒ, beforeBody: ƒ, beforeLabel: ƒ, …}
+            caretPadding: 2,
+            caretSize: 5,
+            cornerRadius: 6,
+            custom: null,
+            displayColors: false,
+            enabled: true,
+            footerAlign: "left",
+            footerFontColor: "#fff",
+            footerFontStyle: "bold",
+            footerMarginTop: 6,
+            footerSpacing: 2,
+            intersect: true,
+            mode: "nearest",
+            multiKeyBackground: "#fff",
+            position: "average",
+            titleAlign: "left",
+            titleFontColor: "#fff",
+            titleFontStyle: "bold",
+            titleMarginBottom: 6,
+            titleSpacing: 2,
+            xPadding: 6,
+            yPadding: 6
+          }
+    }
+
     return (
       <div className='chart' style={{ width: '100%', height: '100%' }}>
         <Doughnut
           data={this.state.chartData}
           width={100}
           eight={50}
-          options={{
-            responsive: true,
-            maintainAspectRatio: false,
-            rotation: 86 * Math.PI,
-            circumference: 57 * Math.PI,
-            legend: {
-              display: false,
-              position: 'right',
-            },
-          }}
+          options ={options}
+          // options={{
+          //   responsive: true,
+          //   maintainAspectRatio: false,
+          //   rotation: 86 * Math.PI,
+          //   circumference: 57 * Math.PI,
+          //   legend: {
+          //     display: false,
+          //     position: 'right',
+          //   },
+          //   tooltips: {
+          //         backgroundColor: "rgba(0,0,0,0.8)",
+          //         bodyAlign: "left",
+          //         bodyFontColor: "#fff",
+          //         bodySpacing: 2,
+          //         borderColor: "rgba(0,0,0,0)",
+          //         borderWidth: 0,
+          //         //callbacks: {beforeTitle: ƒ, title: ƒ, afterTitle: ƒ, beforeBody: ƒ, beforeLabel: ƒ, …}
+          //         caretPadding: 2,
+          //         caretSize: 5,
+          //         cornerRadius: 6,
+          //         custom: null,
+          //         displayColors: false,
+          //         enabled: true,
+          //         footerAlign: "left",
+          //         footerFontColor: "#fff",
+          //         footerFontStyle: "bold",
+          //         footerMarginTop: 6,
+          //         footerSpacing: 2,
+          //         intersect: true,
+          //         mode: "nearest",
+          //         multiKeyBackground: "#fff",
+          //         position: "average",
+          //         titleAlign: "left",
+          //         titleFontColor: "#fff",
+          //         titleFontStyle: "bold",
+          //         titleMarginBottom: 6,
+          //         titleSpacing: 2,
+          //         xPadding: 6,
+          //         yPadding: 6
+          //       }
+          // }}
         />
       </div>
     )
