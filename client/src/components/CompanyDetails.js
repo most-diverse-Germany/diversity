@@ -5,6 +5,7 @@ import CompanyTable from './CompanyTable.js';
 
 
 export default class CompanyDetails extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -13,7 +14,7 @@ export default class CompanyDetails extends Component {
       dataFetched: false
     };
   }
-
+  
   getData = () => {
    
     axios.get(`/api/companies/${this.props.match.params.id}`)
@@ -30,21 +31,11 @@ export default class CompanyDetails extends Component {
       console.log(err);
       if (err.response.status === 404) {
         this.setState({
-          company: response.data,
-          dataFetched: true,
-          // this unsets the flag when the data is available
-          // dataRequested: false
+          error: 'Not found 🤷‍♀️🤷‍♂️'
         })
-      })
-      .catch((err) => {
-        console.log(err)
-        if (err.response.status === 404) {
-          this.setState({
-            error: 'Not found 🤷‍♀️🤷‍♂️',
-          })
-        }
-      })
-  }
+      }
+    })
+}
 
   componentDidMount() {
     this.getData()
@@ -71,7 +62,6 @@ render() {
   }
 
 }
-
   
 }
 
