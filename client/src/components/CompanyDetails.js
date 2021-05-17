@@ -55,7 +55,7 @@ export default class CompanyDetails extends Component {
             <CompanyTable company={this.state.company} />
           </div>
 
-          <div className='tw-flex tw-justify-center'>
+          <div>
           <ShareIcon company={this.state.company} />
           </div>
         </>
