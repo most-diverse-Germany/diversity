@@ -9,7 +9,7 @@ const companySchema = new Schema(
     growth_score: Number,
     opportunity_score: Number,
   },
-  { collection: 'company_data' } // -> this is necessary when you use a pre-existing collection
+  { collection: 'apicompanies' } // -> this is necessary when you use a pre-existing collection
 )
 
 const Company = model('Company', companySchema)
