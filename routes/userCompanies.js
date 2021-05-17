@@ -9,9 +9,8 @@ router.post('/', (req, res, next) => {
   }
   UserCompany.find({ owner: req.user._id }).then((results) => {
     if (results.length) {
-      return res
-        .status(500)
-        .send({ error: 'You can only register one company' })
+      return res.status(500)
+      // .send({ error: 'You can only register one company' })
     } else {
       console.log('userCompany')
       const {

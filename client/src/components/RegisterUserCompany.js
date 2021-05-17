@@ -42,31 +42,57 @@ export default function RegisterUserCompany(props) {
 
   const handleRegister = (e) => {
     e.preventDefault()
-    createUserCompany(urlLinkedin).then((response) => {
-      if (response.error) {
-        setMessage(response.error)
-        setUrlLinkedin('')
-      } else {
-        console.log(response)
-        props.setUserCompany(response)
-        setMessage('We calculated your Scores!')
-        setUrlLinkedin('')
-        // const {
-        //   _id,
-        //   company_name,
-        //   url_linkedin,
-        //   diversity_total,
-        //   growth_score,
-        //   opportunity_score,
-        // } = response.data
-        // setUserCompanyId(_id)
-        // setCompanyName(company_name)
-        // setUrlLinkedin(url_linkedin)
-        // setDiversityScore(diversity_total)
-        // setGrowthScore(growth_score)
-        // setOpportunityScore(opportunity_score)
-      }
-    })
+    if (props.userCompany) {
+      // console.log(props.userCompany.id)
+      console.log(props.userCompany)
+      console.log(props.userCompany.company_name)
+      console.log(props.userCompany._id)
+      updateUserCompany(props.userCompany._id, urlLinkedin)
+        .then((response) => {
+          console.log(response)
+          props.setUserCompany(response)
+          console.log(props.userCompany)
+          setMessage('We re-calculated your Score!')
+          setUrlLinkedin('')
+        })
+        .catch((err) => setMessage(err))
+      // .then(() => {
+      //   console.log(urlLinkedin)
+      //   createUserCompany(urlLinkedin)
+      //     .then((userCompany) => {
+      //       props.setUserCompany(userCompany)
+      //       setMessage('We re-calculated your Score!')
+      //       setUrlLinkedin('')
+      //     })
+      //     .catch((err) => console.log(err))
+      // })
+    }
+
+    // createUserCompany(urlLinkedin).then((response) => {
+    //   if (response.error) {
+    //     setMessage(response.error)
+    //     // setUrlLinkedin('')
+    //   } else {
+    //     console.log(response)
+    //     props.setUserCompany(response)
+    //     setMessage('We calculated your Scores!')
+    //     setUrlLinkedin('')
+    //     // const {
+    //     //   _id,
+    //     //   company_name,
+    //     //   url_linkedin,
+    //     //   diversity_total,
+    //     //   growth_score,
+    //     //   opportunity_score,
+    //     // } = response.data
+    //     // setUserCompanyId(_id)
+    //     // setCompanyName(company_name)
+    //     // setUrlLinkedin(url_linkedin)
+    //     // setDiversityScore(diversity_total)
+    //     // setGrowthScore(growth_score)
+    //     // setOpportunityScore(opportunity_score)
+    //   }
+    // })
   }
 
   const style = {
@@ -85,7 +111,7 @@ export default function RegisterUserCompany(props) {
     <div>
       <div
         id='userCompanyRegistration'
-        className='tw-w-full md:tw-w-4/12 tw-px-5'
+        className='tw-w-full md:tw-w-4/12 tw-px-5 tw-pb-10'
       >
         <h1 className='tw-text-blue-600 tw-text-left'>Register</h1>
         <h3>register and compare your company</h3>
@@ -109,7 +135,11 @@ export default function RegisterUserCompany(props) {
           >
             Submit & Compare
           </button>
-          {message && <h3>{message}</h3>}
+          {message && (
+            <div className='tw-text-left tw-text-xs font-bold tw-pt-3'>
+              {message}
+            </div>
+          )}
         </form>
       </div>
     </div>

@@ -1,7 +1,10 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:5005/",
+  "proxy": {
+      "target": "http://0.0.0.0:3001",
+      "secure": false
+  },
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",
