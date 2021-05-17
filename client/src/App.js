@@ -12,6 +12,7 @@ import Or from './components/Or'
 import RegisterUserCompany from './components/RegisterUserCompany'
 import UserCompany from './components/UserCompany'
 import { getUserCompaniesFromUser } from './services/userCompanies'
+import { getTop100Companies } from './services/companies'
 
 const axios = require('axios')
 
@@ -21,14 +22,17 @@ function App(props) {
   const [userCompany, setUserCompany] = useState()
 
   useEffect(() => {
-    axios
-      .get('/api/companies')
-      .then((response) => {
-        setCompanies(response.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    getTop100Companies()
+      .then((top100) => setCompanies(top100))
+      .catch((err) => console.log(err))
+    // axios
+    //   .get('/api/companies')
+    //   .then((response) => {
+    //     setCompanies(response.data)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
   }, [])
 
   useEffect(() => {
@@ -66,7 +70,12 @@ function App(props) {
           redirectPath='/'
         /> */}
           {user && <EditProfile user={user} setUser={setUser} />}
-          {user && <RegisterUserCompany setUserCompany={setUserCompany} />}
+          {user && (
+            <RegisterUserCompany
+              userCompany={userCompany}
+              setUserCompany={setUserCompany}
+            />
+          )}
           {userCompany && <UserCompany userCompany={userCompany} />}
 
           {/* <CompaniesList companies={companies} /> */}
