@@ -63,7 +63,7 @@ export default class CompanyDetails extends Component {
               url = {
               `https://most-diverse-100.herokuapp.com/companies/${this.state.company._id}`
               } 
-               title = { `${this.state.company} is part of the most diverse 100 companies ranking of imagine foundation`}
+               title = { `${this.state.company.company_name} is part of the most diverse 100 companies ranking of imagine foundation`}
               >
               <LinkedinIcon size={35} round={true} />
               </LinkedinShareButton>
@@ -74,7 +74,7 @@ export default class CompanyDetails extends Component {
               url = {       
                 `https://most-diverse-100.herokuapp.com/companies/${this.state.company._id}`
               } 
-               title = { `${this.state.company} is part of the most diverse 100 companies ranking of imagine foundation`}
+               title = { `${this.state.company.company_name} is part of the most diverse 100 companies ranking of imagine foundation`}
               >
               <WhatsappIcon size={35} round={true} />
               </WhatsappShareButton>
@@ -85,7 +85,7 @@ export default class CompanyDetails extends Component {
               url = {
                 `https://most-diverse-100.herokuapp.com/companies/${this.state.company._id}`
               } 
-               title = {`${this.state.company} is part of the most diverse 100 companies ranking of imagine foundation`}
+               title = {`${this.state.company.company_name} is part of the most diverse 100 companies ranking of imagine foundation`}
               >
               <TwitterIcon size={35} round={true} />
               </TwitterShareButton>
