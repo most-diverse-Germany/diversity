@@ -5,28 +5,39 @@ import CompanyTable from './CompanyTable.js';
 import ShareIcon from './ShareIcon.js';
 
 
+
 export default class CompanyDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
       company: {},
       diversityScore: {},
-      dataFetched: false,
-    }
+      dataFetched: false
+    };
   }
 
   getData = () => {
-    axios
-      .get(`/api/companies/${this.props.match.params.id}`)
-      .then((response) => {
-        // console.log(response.data);
-        this.setState({
-          company: response.data,
-          dataFetched: true,
-          // this unsets the flag when the data is available
-          // dataRequested: false
-        })
+   
+    axios.get(`/api/companies/${this.props.match.params.id}`)
+    .then(response => {
+      // console.log(response.data);
+      this.setState({
+        company: response.data,
+        dataFetched: true
+        // this unsets the flag when the data is available
+        // dataRequested: false
       })
+    })
+    // .catch(err => {
+    //   console.log(err);
+    //   if (err.response.status === 404) {
+    //     this.setState({
+    //       company: response.data,
+    //       dataFetched: true,
+    //       // this unsets the flag when the data is available
+    //       // dataRequested: false
+    //     })
+    //   })
       .catch((err) => {
         console.log(err)
         if (err.response.status === 404) {
@@ -40,6 +51,7 @@ export default class CompanyDetails extends Component {
   componentDidMount() {
     this.getData()
   }
+
 
   render() {
     if (this.state.dataFetched) {
@@ -63,5 +75,11 @@ export default class CompanyDetails extends Component {
     } else {
       return null
     }
+
   }
+
 }
+
+  
+}
+
