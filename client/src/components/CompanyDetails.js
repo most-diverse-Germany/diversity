@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Chart from './Chart.js';
 import CompanyTable from './CompanyTable.js';
-import { LinkedinShareButton, WhatsappShareButton, TwitterShareButton} from 'react-share';
-import { LinkedinIcon, WhatsappIcon, TwitterIcon } from 'react-share';
+import ShareIcon from './ShareIcon.js';
+
 
 export default class CompanyDetails extends Component {
   constructor(props) {
@@ -55,42 +55,8 @@ export default class CompanyDetails extends Component {
             <CompanyTable company={this.state.company} />
           </div>
 
-        
-
-          <div className='tw-flex tw-justify-center'>
-          <div className='tw-mx-4'>
-            <LinkedinShareButton
-              url = {
-              `https://most-diverse-100.herokuapp.com/companies/${this.state.company._id}`
-              } 
-               title = { `${this.state.company.company_name} is part of the most diverse 100 companies ranking of imagine foundation`}
-              >
-              <LinkedinIcon size={35} round={true} />
-              </LinkedinShareButton>
-              </div>
-
-              <div className='tw-mx-4'>
-              <WhatsappShareButton
-              url = {       
-                `https://most-diverse-100.herokuapp.com/companies/${this.state.company._id}`
-              } 
-               title = { `${this.state.company.company_name} is part of the most diverse 100 companies ranking of imagine foundation`}
-              >
-              <WhatsappIcon size={35} round={true} />
-              </WhatsappShareButton>
-              </div>
-              
-              <div className='tw-mx-4'>
-              <TwitterShareButton
-              url = {
-                `https://most-diverse-100.herokuapp.com/companies/${this.state.company._id}`
-              } 
-               title = {`${this.state.company.company_name} is part of the most diverse 100 companies ranking of imagine foundation`}
-              >
-              <TwitterIcon size={35} round={true} />
-              </TwitterShareButton>
-              </div>
-
+          <div>
+          <ShareIcon company={this.state.company} />
           </div>
         </>
       )
