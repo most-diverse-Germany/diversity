@@ -47,9 +47,16 @@ export default function CompanyRow(props) {
     padding: '0.4rem',
   }
 
+  // console.log(props.company);
+  
+
+  if (!props.company) return (<h3>no results</h3>)
+
   return (
     
     <div className="tw-flex tw-items-center tw-justify-start tw-m-4" key={props.company._id}>
+
+      
 
         <h3 style={nameStyle} className="tw-text-imagineText">{props.company.company_name}</h3>      
         

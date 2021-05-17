@@ -13,6 +13,7 @@ import RegisterUserCompany from './components/RegisterUserCompany'
 import UserCompany from './components/UserCompany'
 import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
+import SearchBar from './components/SearchBar'
 
 const axios = require('axios')
 
@@ -20,7 +21,8 @@ function App(props) {
   const [companies, setCompanies] = useState([])
   const [user, setUser] = useState(props.user)
   const [userCompany, setUserCompany] = useState()
-
+  const [searchTerm, setSearchTerm] = useState('');
+  
   useEffect(() => {
     getTop100Companies()
       .then((top100) => setCompanies(top100))
@@ -50,7 +52,8 @@ function App(props) {
     }
   }, [user])
 
-  console.log(companies)
+  // console.log(companies)
+  
 
   if (!companies) return <h1>Loading...</h1>
   return (
@@ -78,7 +81,10 @@ function App(props) {
           )}
           {userCompany && <UserCompany userCompany={userCompany} />}
 
-          {/* <CompaniesList companies={companies} /> */}
+          <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+          
+          <CompaniesList companies={companies} searchTerm={searchTerm} />
+
         </Route>
         {/* is it possible to do id param with new syntax? */}
         {/* <Route exact path='/companies/:id' component={CompanyDetails} /> */}
@@ -91,4 +97,6 @@ function App(props) {
   )
   // }
 }
+
+
 export default App
