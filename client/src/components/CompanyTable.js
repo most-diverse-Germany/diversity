@@ -25,11 +25,11 @@ export default function CompanyTable(props) {
               </tr>
               <tr className='hover:tw-bg-red-50'>
                 <td className='tw-px-6 tw-py-4 tw-text-left tw-font-bold'>
-                  Link
+                  Linkedin
                 </td>
                 <td className='tw-px-6 tw-py-4 tw-text-left'>
                   {' '}
-                  <a href={props.company.url_linkedIn}>LinkedIn-Link</a>
+                  <a href={props.company.url_linkedIn}>Click here</a>
                 </td>
               </tr>
               <tr className='hover:tw-bg-red-50'>

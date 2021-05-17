@@ -1,124 +1,69 @@
-import React, { PureComponent } from 'react'
-import { Doughnut } from 'react-chartjs-2'
+import React, { Component } from 'react';
+import { Doughnut } from 'react-chartjs-2';
 
-export default class Chart extends PureComponent {
-  constructor(props) {
+
+
+export default class Chart extends Component {
+
+  constructor(props){
     super(props)
-
+    
     this.state = {
-      chartData: {
-        labels: ['Diversity', 'Opportunity', 'Growth'],
-        datasets: [
+      chartData:{
+        labels: [
+          "Diversity",
+          "Opportunity",
+          "Growth"
+      ],
+      datasets: [
           {
-            data: [
-              this.props.company.diversity_total,
-              this.props.company.growth_score,
-              this.props.company.opportunity_score,
-            ],
-
-            backgroundColor: ['#E0296C', '#3C7695', '#954E8B'],
-            hoverBackgroundColor: ['#EC6A8E', '#56B39E', '#F7A559'],
-            borderWidth: 2,
-          },
-        ],
-      },
+               data: [this.props.company.diversity_total, this.props.company.growth_score, this.props.company.opportunity_score],
+            
+              backgroundColor: [
+                  "#E0296C",
+                  "#3C7695",
+                  "#954E8B"
+              ],
+              hoverBackgroundColor: [
+                  "#EC6A8E",
+                  "#56B39E",
+                  "#F7A559"
+              ],
+              borderWidth: 2
+          }]
+      }
     }
   }
 
+ 
   render() {
     //  console.log(this.state.props.company)
-
-   const options={
-      responsive: true,
-      maintainAspectRatio: false,
-      rotation: 86 * Math.PI,
-      circumference: 57 * Math.PI,
-      legend: {
-        display: false,
-        position: 'right',
-      },
-      tooltips: {
-            backgroundColor: "rgba(0,0,0,0.8)",
-            bodyAlign: "left",
-            bodyFontColor: "#fff",
-            bodySpacing: 2,
-            borderColor: "rgba(0,0,0,0)",
-            borderWidth: 0,
-            //callbacks: {beforeTitle: ƒ, title: ƒ, afterTitle: ƒ, beforeBody: ƒ, beforeLabel: ƒ, …}
-            caretPadding: 2,
-            caretSize: 5,
-            cornerRadius: 6,
-            custom: null,
-            displayColors: false,
-            enabled: true,
-            footerAlign: "left",
-            footerFontColor: "#fff",
-            footerFontStyle: "bold",
-            footerMarginTop: 6,
-            footerSpacing: 2,
-            intersect: true,
-            mode: "nearest",
-            multiKeyBackground: "#fff",
-            position: "average",
-            titleAlign: "left",
-            titleFontColor: "#fff",
-            titleFontStyle: "bold",
-            titleMarginBottom: 6,
-            titleSpacing: 2,
-            xPadding: 6,
-            yPadding: 6
-          }
-    }
-
+    
     return (
-      <div className='chart' style={{ width: '100%', height: '100%' }}>
-        <Doughnut
-          data={this.state.chartData}
-          width={100}
-          eight={50}
-          options ={options}
-          // options={{
-          //   responsive: true,
-          //   maintainAspectRatio: false,
-          //   rotation: 86 * Math.PI,
-          //   circumference: 57 * Math.PI,
-          //   legend: {
-          //     display: false,
-          //     position: 'right',
-          //   },
-          //   tooltips: {
-          //         backgroundColor: "rgba(0,0,0,0.8)",
-          //         bodyAlign: "left",
-          //         bodyFontColor: "#fff",
-          //         bodySpacing: 2,
-          //         borderColor: "rgba(0,0,0,0)",
-          //         borderWidth: 0,
-          //         //callbacks: {beforeTitle: ƒ, title: ƒ, afterTitle: ƒ, beforeBody: ƒ, beforeLabel: ƒ, …}
-          //         caretPadding: 2,
-          //         caretSize: 5,
-          //         cornerRadius: 6,
-          //         custom: null,
-          //         displayColors: false,
-          //         enabled: true,
-          //         footerAlign: "left",
-          //         footerFontColor: "#fff",
-          //         footerFontStyle: "bold",
-          //         footerMarginTop: 6,
-          //         footerSpacing: 2,
-          //         intersect: true,
-          //         mode: "nearest",
-          //         multiKeyBackground: "#fff",
-          //         position: "average",
-          //         titleAlign: "left",
-          //         titleFontColor: "#fff",
-          //         titleFontStyle: "bold",
-          //         titleMarginBottom: 6,
-          //         titleSpacing: 2,
-          //         xPadding: 6,
-          //         yPadding: 6
-          //       }
-          // }}
-        />
+     
+      <div className="chart" style={{width:"100%",height:"100%"}}>
+
+          <Doughnut
+            data={this.state.chartData}
+            width={100}
+	          eight={50}
+            
+            
+
+            options={{
+             
+               responsive: true,
+                maintainAspectRatio: false,
+                rotation: 86 * Math.PI,
+                circumference: 57 * Math.PI,
+                 legend: {
+                   display: false,
+                   position: 'right'
+                 }
+                }}   
+             
+          />
+        
       </div>
     )
   }
@@ -194,6 +139,8 @@ export default class Chart extends PureComponent {
 
 // export default Chart
 
+
+
 /////////////////////////////////////////////////Example Ahmed////////////////////////
 // import React, { Component } from 'react';
 // import Chart from "chart.js";
@@ -208,9 +155,9 @@ export default class Chart extends PureComponent {
 //     })
 //   }
 //   render() {
-//     if(this.state.myChartRef && this.props.symbolsPrice && this.props.portfolio.length !== 0)
+//     if(this.state.myChartRef && this.props.symbolsPrice && this.props.portfolio.length !== 0) 
 //     {
-//       const labels = Object.keys(this.props.symbolsPrice);
+//       const labels = Object.keys(this.props.symbolsPrice);  
 //       const valueArray = this.props.portfolio.map(element => {
 //         return ((element.count) * this.props.symbolsPrice[element.ticker])
 //       })
@@ -230,7 +177,7 @@ export default class Chart extends PureComponent {
 //             datasets: [
 //                 {
 //                   data: data,
-//                   backgroundColor: colorsArray,
+//                   backgroundColor: colorsArray, 
 //                 }
 //             ],
 //             labels: labels

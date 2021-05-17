@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Chart from './Chart.js';
 import CompanyTable from './CompanyTable.js';
+import ShareIcon from './ShareIcon.js';
+
 
 
 export default class CompanyDetails extends Component {
@@ -50,24 +52,30 @@ export default class CompanyDetails extends Component {
     this.getData()
   }
 
-render() {
-  if(this.state.dataFetched) {
-    console.log('CompanyDetails',this.state.company)
-    return (
-      <>
-      <div className="table-auto">
-         <h1>Name: {this.state.company.company_name}</h1>
-         <Chart company={this.state.company} /> 
-      </div>
-      
-      <div>
-      <CompanyTable company={this.state.company} />
-      </div>
-      </>
 
-    )
-  } else {
-    return(null);
+  render() {
+    if (this.state.dataFetched) {
+      console.log('CompanyDetails', this.state.company)
+      return (
+        <>
+          <div className='tw-mt-8'>
+            <h1> {this.state.company.company_name}</h1>
+            <Chart company={this.state.company} />
+          </div>
+
+          <div>
+            <CompanyTable company={this.state.company} />
+          </div>
+
+          <div>
+          <ShareIcon company={this.state.company} />
+          </div>
+        </>
+      )
+    } else {
+      return null
+    }
+
   }
 
 }
