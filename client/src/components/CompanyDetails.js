@@ -75,11 +75,5 @@ export default class CompanyDetails extends Component {
     } else {
       return null
     }
-
   }
-
 }
-
-  
-}
-
