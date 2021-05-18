@@ -14,6 +14,7 @@ import UserCompany from './components/UserCompany'
 import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
 import SearchBar from './components/SearchBar'
+import MovingBanner from './components/MovingBanner'
 
 const axios = require('axios')
 
@@ -81,10 +82,9 @@ function App(props) {
           )}
           {userCompany && <UserCompany userCompany={userCompany} />}
 
-          <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-          
+          <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} /> 
           <CompaniesList companies={companies} searchTerm={searchTerm} />
-
+          <MovingBanner text={'Diversity = Opportunity '} />
         </Route>
         {/* is it possible to do id param with new syntax? */}
         {/* <Route exact path='/companies/:id' component={CompanyDetails} /> */}
