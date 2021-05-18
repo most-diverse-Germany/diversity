@@ -14,6 +14,7 @@ import UserCompany from './components/UserCompany'
 import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
 import SearchBar from './components/SearchBar'
+import HamburgerMenu from './components/HamburgerMenu'
 
 const axios = require('axios')
 
@@ -58,6 +59,8 @@ function App(props) {
   if (!companies) return <h1>Loading...</h1>
   return (
     <div className='App'>
+
+
       <Switch>
         <Route exact path='/'>
           <Logout user={user} setUser={setUser} />
@@ -81,9 +84,13 @@ function App(props) {
           )}
           {userCompany && <UserCompany userCompany={userCompany} />}
 
+          <HamburgerMenu />
+          
           <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
           
           <CompaniesList companies={companies} searchTerm={searchTerm} />
+         
+        
 
         </Route>
         {/* is it possible to do id param with new syntax? */}
@@ -93,6 +100,7 @@ function App(props) {
         </Route>
         <Route exact path='/companies/:id' component={CompanyDetails} />
       </Switch>
+    
     </div>
   )
   // }
