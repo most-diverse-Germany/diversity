@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
-
+import Spinner from './Spinner';
+import './CompanyRow.css'
 
 export default function CompanyRow(props) {
   
@@ -29,38 +30,36 @@ export default function CompanyRow(props) {
   })
 
   const scoreStyle = {
-    fontSize: '8px',
     fontWeight: '900',
-    color: 'white',
-    border: '1px solid #e0296c',
-    padding: '0.4rem',
+    color: props.backgroundColor,
+    backgroundColor: props.listColor
     // width: '60%'
   }
 
   const nameStyle = {
-    fontSize: '10px',
+    color: props.color,
+    textAlign: 'right',
     fontWeight: '900',
-    width: '150px',
-    minWidth: '150px',
-    border: '1px solid black',
-    padding: '0.4rem',
+    width: '140px',
+    minWidth: '140px',
+    paddingRight: '0.4rem'
   }
 
   // console.log(props.company);
   
 
-  if (!props.company) return (<h3>no results</h3>)
+  if (props.company.length === 0) return (<p>no results</p>)
 
   return (
     
-    <div className="tw-flex tw-items-center tw-justify-start tw-m-4" key={props.company._id}>
+    <div style={{ backgroundColor: props.backgroundColor}} className="tw-flex tw-items-center tw-justify-start tw-m-4" key={props.company._id}>
 
-      
-
-        <h3 style={nameStyle} className="tw-text-imagineText">{props.company.company_name}</h3>      
+        <h3 style={nameStyle} className="compName tw-text-xs md:tw-text-sm tw-text-imagineText">{props.company.company_name.toUpperCase()}</h3>      
         
         <animated.div style={animate}>
-        <h3 className="tw-bg-imagineRed hover:tw-bg-imaginePink" style={scoreStyle}>{averageScore.toFixed(2)}</h3> 
+        <h3 className="listName md:tw-p-1" style={scoreStyle}>
+        <p className="textName"> {averageScore.toFixed(2)} </p> 
+        </h3>
         </animated.div>
     </div>
     

@@ -96,13 +96,20 @@ function App(props) {
           {userCompany && <UserCompany userCompany={userCompany} />}
           <BannerIdea />
           {/* <Banner2 /> */}
-          <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-          <CompaniesList companies={companies} searchTerm={searchTerm} />
-          <BannerScrolling
+          <div style={{backgroundColor:"#5e62d1"}}>
+          <SearchBar
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+            color={'#67ecc8'}
+            backgroundColor={"#5e62d1"}
+          />
+            <CompaniesList companies={companies} searchTerm={searchTerm} />
+          </div>
+          {/* <BannerScrolling
             text={"Diversity Equals Opportunity"}
             color={"#56b39e"}
             backgroundColor={"#f7a559"}
-          />
+          /> */}
         </Route>
         {/* is it possible to do id param with new syntax? */}
         {/* <Route exact path='/companies/:id' component={CompanyDetails} /> */}
