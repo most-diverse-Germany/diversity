@@ -31,7 +31,6 @@ export default function CompanyRow(props) {
   const scoreStyle = {
     fontSize: '8px',
     fontWeight: '900',
-    backgroundColor: '#e0296c',
     color: 'white',
     border: '1px solid #e0296c',
     padding: '0.4rem',
@@ -61,7 +60,7 @@ export default function CompanyRow(props) {
         <h3 style={nameStyle} className="tw-text-imagineText">{props.company.company_name}</h3>      
         
         <animated.div style={animate}>
-        <h3 style={scoreStyle}>{averageScore.toFixed(2)}</h3> 
+        <h3 className="tw-bg-imagineRed hover:tw-bg-imaginePink" style={scoreStyle}>{averageScore.toFixed(2)}</h3> 
         </animated.div>
     </div>
     
