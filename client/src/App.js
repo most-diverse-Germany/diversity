@@ -87,9 +87,9 @@ function App(props) {
           <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} /> 
           <CompaniesList companies={companies} searchTerm={searchTerm} />
           <BannerScrolling
-            text={'Diversity Equals Opportunity'}
-            textColor={'#56b39e'}
-            bgColor={'#f7a559'}
+            text={"Diversity Equals Opportunity"}
+            color={"#56b39e"}
+            backgroundColor={"#f7a559"}
           />
         </Route>
         {/* is it possible to do id param with new syntax? */}
