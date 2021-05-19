@@ -47,12 +47,12 @@ export default function SectionChartTable(props) {
     }
   })
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((seconds) => seconds + 1)
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setSeconds((seconds) => seconds + 1)
+  //   }, 1000)
+  //   return () => clearInterval(interval)
+  // }, [])
 
   const currentColors = colors[seconds % 4]
 
@@ -81,8 +81,15 @@ export default function SectionChartTable(props) {
         >
           THE WORLD IS <br />A COLOURFUL PLACE
         </div>
-        <div className='banner tw-text-3xl'>
+        {/* <div className='banner tw-text-3xl'>
           diversity = opportunity diversity = opportunity
+        </div> */}
+        <div className='tw-w-full'>
+          <BannerScrolling
+            text={'Diversity Equals Opportunity'}
+            color={'#8386D1'}
+            backgroundColor={'#77F0D5'}
+          />
         </div>
         {/* <div className='tw-w-full'>
           <BannerScrolling

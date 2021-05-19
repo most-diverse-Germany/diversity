@@ -48,7 +48,7 @@ export default function RegisterUserCompany(props) {
           console.log(response)
           props.setUserCompany(response)
           console.log(props.userCompany)
-          setMessage('We re-calculated your Score!')
+          setMessage('We calculated your Score!')
           setUrlLinkedin('')
         })
         .catch((err) => setMessage(err))

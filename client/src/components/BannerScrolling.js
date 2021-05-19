@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
 import './BannerScrolling.css'
 
 const BannerScrolling = (props) => {
   return (
     <>
-      <div>
-        <p
-          className='marquee'
+      <div className='bannerWrapper'>
+        <div
           style={{
-            backgroundColor: props.backgroundColor,
-            borderBottom: '3px solid',
-            borderTop: '3px solid',
+            position: 'relative',
+            width: '90%',
+            left: '5%',
+            right: '5%',
+            borderBottom: '1px solid',
             borderColor: props.color,
           }}
+        ></div>
+
+        <p
+          className='marquee'
+          style={{ backgroundColor: props.backgroundColor }}
         >
           <span>
             <h1 style={{ color: props.color }}>{props.text}</h1>
@@ -23,8 +28,20 @@ const BannerScrolling = (props) => {
             <h1 style={{ color: props.color }}>{props.text}</h1>
           </span>
         </p>
+        <div
+          style={{
+            transform: 'translateY(100px)',
+            position: 'relative',
+            width: '90%',
+            left: '5%',
+            right: '5%',
+            borderTop: '1px solid',
+            borderColor: props.color,
+          }}
+        ></div>
       </div>
     </>
   )
 }
+
 export default BannerScrolling
