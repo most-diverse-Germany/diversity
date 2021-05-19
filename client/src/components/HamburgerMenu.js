@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Spin as Hamburger } from 'hamburger-react';
+import { Cross as Hamburger } from 'hamburger-react';
 import "./styles.module.css";
-import { debounce } from './helpers';
-import { useTrail, animated as a } from "react-spring";
+import { debounce } from './helper';
+import { useSpring, animated } from 'react-spring';
 
 
 export default function HamburgerMenu(props) {
+
+  
 
   const [isOpen, setOpen] = useState(false);
 
@@ -16,6 +18,7 @@ export default function HamburgerMenu(props) {
   const [prevScrollPos, setPrevScrollPos] = useState(0); 
   const [visible, setVisible] = useState(true);  
 
+  // for using debounce: https://davidwalsh.name/javascript-debounce-function
   // const handleScroll = debounce(() => {
   //   const currentScrollPos = window.pageYOffset;
   //   setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) || currentScrollPos < 10);
@@ -26,7 +29,7 @@ export default function HamburgerMenu(props) {
   const handleScroll = () => {    
     // find current scroll position
     const currentScrollPos = window.pageYOffset;
-    setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) || currentScrollPos < 10);
+    setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 20) || currentScrollPos < 10);
     setPrevScrollPos(currentScrollPos);
   };
 
@@ -35,28 +38,62 @@ export default function HamburgerMenu(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos, visible, handleScroll]);
 
+  const navbarStyles = {
+    position: 'fixed',
+    height: '50px',
+    width: '50px',
+    transition: 'top 0.7s' ,
+    display: 'flex',
+    backgroundColor: '#E0296C',
+    borderRadius: '50px'
+  }
 
+  const animate = useSpring({
+  //  opacity: isOpen ? 1 : 0
+  from: { opacity: 0, width: '0vw', height:'0vw' },
+    to: { opacity: 1, width: '100vw', height:'100vw'},
+    config:
+    {
+      // duration: 1000,
+      tension: 50,
+      mass: 2,
+      friction: 26,
+      velocity: 2,
+      precision: 0.01
+    }
+  })
+
+    
   return (
-    <div>
-
-<div className={{
-  top: visible ? '0' : '-60px'}}>
-
-<Hamburger rounded toggled={isOpen} size={40} distance="lg" toggle={setOpen} duration={1} onToggle={handleToggle}/>
-</div>
-
-    <div className={
+<>    
+    <div style={{ ...navbarStyles, top: visible ? '0' : '-60px' }}>  
+    
+    <Hamburger rounded color='#FCE7CC' toggled={isOpen} size={35} distance="md" toggle={setOpen} duration={1} onToggle={handleToggle} />
+     
+    <div style={animate} className={
     isOpen ? 'tw-block' : 'tw-hidden'} >
  
-  <div className='tw-w-screen tw-h-screen tw-bg-imagineRed tw-ease-in tw-space-y-10 tw-z-10 '>
-  <a href="#" className='tw-block tw-px-4 tw-font-semibold tw-text-6xl tw-pt-16'>Element</a>
+  <div className='tw-w-screen tw-h-screen tw-bg-imagineRed tw-space-y-10'>
+  <a href="#" className='tw-block tw-px-4 tw-font-semibold tw-text-6xl'>Element</a>
   <a href="#" className='tw-block tw-px-4 tw-font-semibold tw-text-6xl'>Element</a>
   <a href="#" className='tw-block tw-px-4 tw-font-semibold tw-text-6xl'>Element</a>
   </div>
-  
-  
+
 </div>
 
-   </div>
+  </div>
+
+
+    {/* <div>
+
+<div>
+
+
+</div>
+
+  
+
+   </div> */}
+  </>
   )
 }
