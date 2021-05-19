@@ -52,20 +52,17 @@ export default function RegisterUserCompany(props) {
           console.log(response)
           props.setUserCompany(response)
           console.log(props.userCompany)
-          setMessage('We re-calculated your Score!')
+          setMessage('We calculated your Score!')
           setUrlLinkedin('')
         })
         .catch((err) => setMessage(err))
-      // .then(() => {
-      //   console.log(urlLinkedin)
-      //   createUserCompany(urlLinkedin)
-      //     .then((userCompany) => {
-      //       props.setUserCompany(userCompany)
-      //       setMessage('We re-calculated your Score!')
-      //       setUrlLinkedin('')
-      //     })
-      //     .catch((err) => console.log(err))
-      // })
+    } else {
+      createUserCompany(urlLinkedin).then((response) => {
+        props.setUserCompany(response)
+          console.log(props.userCompany)
+          setMessage('We re-calculated your Score!')
+          setUrlLinkedin('')
+      }).catch(err => setMessage(err))
     }
 
     // createUserCompany(urlLinkedin).then((response) => {
