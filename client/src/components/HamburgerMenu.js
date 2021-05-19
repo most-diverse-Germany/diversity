@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Cross as Hamburger } from 'hamburger-react';
 import "./styles.module.css";
-import { debounce } from './helper';
-import { useSpring, animated } from 'react-spring';
+//import { debounce } from './helper';
+import { useSpring, animated } from "react-spring";
 
 
 export default function HamburgerMenu(props) {
@@ -51,49 +51,47 @@ export default function HamburgerMenu(props) {
   const animate = useSpring({
   //  opacity: isOpen ? 1 : 0
   from: { opacity: 0, width: '0vw', height:'0vw' },
-    to: { opacity: 1, width: '100vw', height:'100vw'},
+    to: { opacity: 1, width: '100vw', height:'100vh'},
     config:
     {
       // duration: 1000,
       tension: 50,
       mass: 2,
       friction: 26,
-      velocity: 2,
+      velocity: 1,
       precision: 0.01
     }
   })
 
+
+  const toggleMenu = () => {
+    setOpen(!isOpen);
+  };
+
     
   return (
+
 <>    
-    <div style={{ ...navbarStyles, top: visible ? '0' : '-60px' }}>  
     
+    <div style={{ ...navbarStyles, top: visible ? '0' : '-60px' }}>  
+    <button onClick={toggleMenu}>
     <Hamburger rounded color='#FCE7CC' toggled={isOpen} size={35} distance="md" toggle={setOpen} duration={1} onToggle={handleToggle} />
-     
-    <div style={animate} className={
+    </button>
+   
+
+    <div className={
     isOpen ? 'tw-block' : 'tw-hidden'} >
  
-  <div className='tw-w-screen tw-h-screen tw-bg-imagineRed tw-space-y-10'>
+  <animated.div key={props} style={animate} className='tw-w-screen tw-h-screen tw-bg-imagineRed tw-space-y-10'>
   <a href="#" className='tw-block tw-px-4 tw-font-semibold tw-text-6xl'>Element</a>
   <a href="#" className='tw-block tw-px-4 tw-font-semibold tw-text-6xl'>Element</a>
   <a href="#" className='tw-block tw-px-4 tw-font-semibold tw-text-6xl'>Element</a>
-  </div>
+  </animated.div>
 
 </div>
 
   </div>
 
 
-    {/* <div>
-
-<div>
-
-
-</div>
-
-  
-
-   </div> */}
-  </>
   )
 }

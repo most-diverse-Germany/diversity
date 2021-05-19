@@ -36,3 +36,22 @@
   height: 100%;
   justify-content: center;
 }
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -15,6 +15,7 @@ import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
 import SearchBar from './components/SearchBar'
 import HamburgerMenu from './components/HamburgerMenu'
+import HamburgerMenuTwo from './components/HamburgerMenuTwo'
 import SectionChartTable from './components/Sections/SectionChartTable'
 import BannerScrolling from './components/BannerScrolling'
 import BannerIdea from './components/BannerIdea'
@@ -61,8 +62,9 @@ function App(props) {
     <div className='App'>
       <Switch>
         <Route exact path='/'>
-           <HamburgerMenu />
+           
           <section>
+          
             {userCompany && console.log(userCompany.company_name)}
             {userCompany && <SectionChartTable company={userCompany} />}
           </section>
@@ -96,6 +98,8 @@ function App(props) {
           {userCompany && <UserCompany userCompany={userCompany} />}
           <BannerIdea />
           {/* <Banner2 /> */}
+          <HamburgerMenu />
+          {/* <HamburgerMenuTwo /> */}
           <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
           <CompaniesList companies={companies} searchTerm={searchTerm} />
           <BannerScrolling
