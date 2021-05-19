@@ -8,7 +8,7 @@ export default function BannerIdea() {
   return (
 
     
-<div style={{ height: "500px" }}>
+<div style={{ height: "350px"}}>
   <Marquee velocity={20} minScale={0.7} resetAfterTries={200} scatterRandomly>
     {array.map((id) => (
       <Motion
@@ -29,7 +29,7 @@ export default function BannerIdea() {
             // backgroundColor: "white",
             textAlign: "center",
             lineHeight: "50px",
-            fontSize: "1.8rem"
+            fontSize: "1rem"
           }}
         >
           {id}
