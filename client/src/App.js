@@ -14,6 +14,7 @@ import UserCompany from './components/UserCompany'
 import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
 import SearchBar from './components/SearchBar'
+import HamburgerMenu from './components/HamburgerMenu'
 
 const axios = require('axios')
 
@@ -60,6 +61,7 @@ function App(props) {
     <div className='App'>
       <Switch>
         <Route exact path='/'>
+           <HamburgerMenu />
           <Logout user={user} setUser={setUser} />
           <Login user={user} setUser={setUser} />
           {!user && <Or />}
@@ -80,6 +82,7 @@ function App(props) {
             />
           )}
           {userCompany && <UserCompany userCompany={userCompany} />}
+
 
           <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
           
