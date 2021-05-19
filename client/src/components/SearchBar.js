@@ -7,12 +7,25 @@ const SearchBar = (props) => {
   const updateInput = (e) => {
     props.setSearchTerm(e.target.value);
   }
+
+  const searchbarStyle = {
+    backgroundColor: props.backgroundColor,
+    // marginBottom: '0'
+  }
+
+  const inputStyle = {
+    backgroundColor: props.backgroundColor,
+    color: props.color,
+    border: '2px solid',
+    borderColor: props.color,
+    width: '100%'
+  }
   
   return (
 
     /////// SEARCH OPTION
-    <div className="tw-pt-4 tw-mx-auto tw-text-imagineText">
-      <input className="tw-w-2/3 tw-border-2 tw-border-gray-300 tw-bg-white tw-h-10 tw-px-5 tw-pr-16 tw-rounded-lg tw-text-sm tw-focus:outline-imagineBlue-rounded-lg"
+    <div style={searchbarStyle} className="tw-p-4 tw-text-imagineText">
+      <input style={inputStyle} className="tw-w-auto tw-h-10 tw-px-5 tw-pr-16 tw-text-sm tw-focus:outline-imagineRed"
       // style={BarStyling}
       key="random1"
       value={props.searchTerm}
