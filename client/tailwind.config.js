@@ -4,7 +4,7 @@ module.exports = {
   prefix: 'tw-',
   theme: {
     fontFamily: {
-      // sans: ['Arial'],
+      sans: ['Roboto'],
       tagline: ['Arial'],
     },
     extend: {
