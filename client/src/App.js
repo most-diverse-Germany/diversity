@@ -14,11 +14,13 @@ import UserCompany from './components/UserCompany'
 import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
 import SearchBar from './components/SearchBar'
+import HamburgerMenu from './components/HamburgerMenu'
 import SectionChartTable from './components/Sections/SectionChartTable'
 import BannerScrolling from './components/BannerScrolling'
 import BannerIdea from './components/BannerIdea'
 import Spinner from './components/Spinner'
 import HeaderIdea from './components/HeaderIdea'
+
 
 const axios = require('axios')
 
@@ -59,6 +61,7 @@ function App(props) {
     <div className='App'>
       <Switch>
         <Route exact path='/'>
+           <HamburgerMenu />
           <section>
             {userCompany && console.log(userCompany.company_name)}
             {userCompany && <SectionChartTable company={userCompany} />}
