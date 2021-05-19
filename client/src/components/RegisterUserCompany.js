@@ -43,10 +43,6 @@ export default function RegisterUserCompany(props) {
   const handleRegister = (e) => {
     e.preventDefault()
     if (props.userCompany) {
-      // console.log(props.userCompany.id)
-      console.log(props.userCompany)
-      console.log(props.userCompany.company_name)
-      console.log(props.userCompany._id)
       updateUserCompany(props.userCompany._id, urlLinkedin)
         .then((response) => {
           console.log(response)
@@ -56,43 +52,16 @@ export default function RegisterUserCompany(props) {
           setUrlLinkedin('')
         })
         .catch((err) => setMessage(err))
-      // .then(() => {
-      //   console.log(urlLinkedin)
-      //   createUserCompany(urlLinkedin)
-      //     .then((userCompany) => {
-      //       props.setUserCompany(userCompany)
-      //       setMessage('We re-calculated your Score!')
-      //       setUrlLinkedin('')
-      //     })
-      //     .catch((err) => console.log(err))
-      // })
+    } else {
+      createUserCompany(urlLinkedin)
+        .then((response) => {
+          props.setUserCompany(response)
+          console.log(props.userCompany)
+          setMessage('We calculated your Score!')
+          setUrlLinkedin('')
+        })
+        .catch((err) => setMessage(err))
     }
-
-    // createUserCompany(urlLinkedin).then((response) => {
-    //   if (response.error) {
-    //     setMessage(response.error)
-    //     // setUrlLinkedin('')
-    //   } else {
-    //     console.log(response)
-    //     props.setUserCompany(response)
-    //     setMessage('We calculated your Scores!')
-    //     setUrlLinkedin('')
-    //     // const {
-    //     //   _id,
-    //     //   company_name,
-    //     //   url_linkedin,
-    //     //   diversity_total,
-    //     //   growth_score,
-    //     //   opportunity_score,
-    //     // } = response.data
-    //     // setUserCompanyId(_id)
-    //     // setCompanyName(company_name)
-    //     // setUrlLinkedin(url_linkedin)
-    //     // setDiversityScore(diversity_total)
-    //     // setGrowthScore(growth_score)
-    //     // setOpportunityScore(opportunity_score)
-    //   }
-    // })
   }
 
   const style = {

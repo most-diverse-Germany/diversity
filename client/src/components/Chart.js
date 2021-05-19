@@ -1,49 +1,52 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import { hexBrighterDarker } from '../services/color'
 
-export default class Chart extends Component {
-  constructor(props) {
-    super(props)
+export default function Chart(props) {
+  const [chart, setChart] = useState(null)
+  console.log(props.company.diversity_total)
 
-    this.state = {
-      chartData: {
-        labels: ['Diversity', 'Opportunity', 'Growth'],
-        datasets: [
-          {
-            data: [
-              this.props.company.diversity_total,
-              this.props.company.growth_score,
-              this.props.company.opportunity_score,
-            ],
-            // data: [
-            //   {
-            //     id: 'Diversity',
-            //     nested: { value: this.props.company.diversity_total },
-            //   },
-            //   { id: 'Growth', nested: { value: this.props.growth_score } },
-            //   {
-            //     id: 'Opportunity',
-            //     nested: { value: this.props.opportunity_score },
-            //   },
-            // ],
+  const initChart = {
+    chartData: {
+      labels: ['Diversity', 'Opportunity', 'Growth'],
+      datasets: [
+        {
+          data: [
+            props.company.diversity_total,
+            props.company.growth_score,
+            props.company.opportunity_score,
+            // 1, 2, 3,
+          ],
+          // backgroundColor: ['#8386D1', '#7B7EC2', '#6A6CA9'],
+          backgroundColor: [
+            hexBrighterDarker(props.colors.color, 50, false, '4D'),
+            hexBrighterDarker(props.colors.color, 25, true, '4D'),
+            hexBrighterDarker(props.colors.color, 0, true, '4D'),
+          ],
+          // hoverBackgroundColor: ['#555BF9', '#4F55DD', '#494DB4'],
+          hoverBackgroundColor: [
+            hexBrighterDarker(props.colors.color, 10, false),
+            hexBrighterDarker(props.colors.color, 5, true),
+            hexBrighterDarker(props.colors.color, 0, true),
+          ],
 
-            backgroundColor: ['#8386D1', '#7B7EC2', '#6A6CA9'],
-            hoverBackgroundColor: ['#555BF9', '#4F55DD', '#494DB4'],
-            borderWidth: 0,
-            cutoutPercentage: 10,
-          },
-        ],
-      },
-    }
+          borderWidth: 0,
+          cutoutPercentage: 10,
+        },
+      ],
+    },
   }
 
-  render() {
-    //  console.log(this.state.props.company)
+  useEffect(() => {
+    setChart(initChart)
+  }, [props.colors])
 
+  if (!chart) return <div>Loading...</div>
+  if (chart)
     return (
       <div className='chart' style={{ width: '100%' }}>
         <Doughnut
-          data={this.state.chartData}
+          data={chart.chartData}
           width={200}
           height={300}
           options={{
@@ -53,7 +56,12 @@ export default class Chart extends Component {
             rotation: 270,
             circumference: 180,
             cutoutPercentage: 10,
-
+            animation: {
+              duration: 1000,
+              animateRotate: props.rotate,
+              easing: 'linear',
+              colors: false,
+            },
             plugins: {
               legend: {
                 display: false,
@@ -70,139 +78,4 @@ export default class Chart extends Component {
         />
       </div>
     )
-  }
 }
-
-////////////////////////////////
-
-// import React from 'react'
-// import { Pie } from 'react-chartjs-2'
-
-// //defaults.global.tooltips.enabled = false
-// //defaults.global.legend.position = 'bottom'
-
-// const Chart = () => {
-//   return (
-//     <div>
-//       <Pie
-//         data={{
-//           labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//           datasets: [
-//             {
-//               label: '# of votes',
-//               data: [12, 19, 3, 5, 2, 3],
-//               backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)',
-//               ],
-//               borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)',
-//               ],
-//               borderWidth: 1,
-//             },
-//             // {
-//             //   label: 'Quantity',
-//             //   data: [47, 52, 67, 58, 9, 50],
-//             //   backgroundColor: 'orange',
-//             //   borderColor: 'red',
-//             // },
-//           ],
-//         }}
-//         height={400}
-//         width={600}
-//         options={{
-//           maintainAspectRatio: false,
-//           scales: {
-//             yAxes: [
-//               {
-//                 ticks: {
-//                   beginAtZero: true,
-//                 },
-//               },
-//             ],
-//           },
-//           legend: {
-//             labels: {
-//               fontSize: 25,
-//             },
-//           },
-//         }}
-//       />
-//     </div>
-//   )
-// }
-
-// export default Chart
-
-/////////////////////////////////////////////////Example Ahmed////////////////////////
-// import React, { Component } from 'react';
-// import Chart from "chart.js";
-// export default class PieChart extends Component {
-//   chartRef = React.createRef();
-//   state = {
-//     myChartRef: undefined,
-//   }
-//   componentDidMount() {
-//     this.setState({
-//       myChartRef: this.chartRef.current.getContext("2d")
-//     })
-//   }
-//   render() {
-//     if(this.state.myChartRef && this.props.symbolsPrice && this.props.portfolio.length !== 0)
-//     {
-//       const labels = Object.keys(this.props.symbolsPrice);
-//       const valueArray = this.props.portfolio.map(element => {
-//         return ((element.count) * this.props.symbolsPrice[element.ticker])
-//       })
-//       const sum = valueArray.reduce((a, b) => a + b, 0);
-//       const data = valueArray.map(element => {
-//         return ((element / sum)*100).toFixed(2);
-//       })
-//       let colorsArray = this.props.portfolio.map(element => {
-//         let r = Math.floor(Math.random() * 200);
-//         let g = Math.floor(Math.random() * 200);
-//         let b = Math.floor(Math.random() * 200);
-//         return('rgb(' + r + ', ' + g + ', ' + b + ')')
-//       })
-//       this.state.myChart = new Chart(this.state.myChartRef, {
-//         type: "doughnut",
-//         data: {
-//             datasets: [
-//                 {
-//                   data: data,
-//                   backgroundColor: colorsArray,
-//                 }
-//             ],
-//             labels: labels
-//         },
-//         options: {
-//           responsive: true,
-//           maintainAspectRatio: true,
-//           legend: {
-//             labels: {
-//               fontColor: "white",
-//               fontSize: 18
-//             }
-//           }
-//         }
-//       });
-//     }
-//     return (
-//       <div style={{width: "45vw", height: "auto"}} className="ml-3 mr-4 border p-3 border-white shadow p-3 mb-5 bg-body rounded">
-//         <h4 className='mb-3'>Portfolio Distribution %</h4>
-//         <div>
-//             <canvas style={{width: "40vw", height: "23vh"}} id="myChart" ref={this.chartRef}/>
-//         </div>
-//       </div>
-//     )
-//   }
-// }
