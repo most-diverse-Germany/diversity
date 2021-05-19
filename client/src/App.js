@@ -15,6 +15,8 @@ import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
 import SearchBar from './components/SearchBar'
 import SectionChartTable from './components/Sections/SectionChartTable'
+import BannerScrolling from './components/BannerScrolling'
+import BannerIdea from './components/BannerIdea'
 
 const axios = require('axios')
 
@@ -81,10 +83,15 @@ function App(props) {
             />
           )}
           {userCompany && <UserCompany userCompany={userCompany} />}
-
+          <BannerIdea />
+          {/* <Banner2 /> */}
           <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-
           <CompaniesList companies={companies} searchTerm={searchTerm} />
+          <BannerScrolling
+            text={'Diversity Equals Opportunity'}
+            textColor={'#56b39e'}
+            bgColor={'#f7a559'}
+          />
         </Route>
         {/* is it possible to do id param with new syntax? */}
         {/* <Route exact path='/companies/:id' component={CompanyDetails} /> */}
