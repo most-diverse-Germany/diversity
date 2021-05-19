@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Chart from '../Chart'
 import CompanyTable from '../CompanyTable'
 import './SectionChartTable.css'
+import BannerScrolling from '../BannerScrolling'
 
 export default function SectionChartTable(props) {
   const [seconds, setSeconds] = useState(0)
-  const [currentColors, setCurrentColors] = useState(colors[0])
+  // const [currentColors, setCurrentColors] = useState(colors[0])
 
   const colors = [
     {
@@ -26,12 +27,12 @@ export default function SectionChartTable(props) {
     },
   ]
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((seconds) => seconds + 1)
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setSeconds((seconds) => seconds + 1)
+  //   }, 1000)
+  //   return () => clearInterval(interval)
+  // }, [])
 
   return (
     <section id='chart-table'>
@@ -43,13 +44,20 @@ export default function SectionChartTable(props) {
       </div>
       <div className='content'>
         <p className='cta-3 '>Lorem ipsum dolor sit amet.</p>
-        <div className='cta-1 tw-text-2xl md:tw-text-6xl'>
+        <div className='cta-1 tw-text-2xl md:tw-text-6xl tw-mb-12'>
           THE WORLD IS <br />A COLOURFUL PLACE
         </div>
-        <div className='banner tw-text-3xl'>
+        {/* <div className='banner tw-text-3xl'>
           diversity = opportunity diversity = opportunity
+        </div> */}
+        <div className='tw-w-full'>
+          <BannerScrolling
+            text={'Diversity Equals Opportunity'}
+            color={'#8386D1'}
+            backgroundColor={'#77F0D5'}
+          />
         </div>
-        <div className='tw-w-1/2'>
+        <div className='tw-w-1/2 tw-mt-12'>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi ullam
             necessitatibus quam atque earum numquam incidunt similique eius

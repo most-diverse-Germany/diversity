@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const SearchBar = (props) => {
   
-  const BarStyling = {width:"20rem",background:"#F2F1F9", padding:"0.5rem", margin: '1rem'};
+  // const BarStyling = {width:"20rem",background:"#F2F1F9", padding:"0.5rem", margin: '1rem'};
 
   const updateInput = (e) => {
     props.setSearchTerm(e.target.value);
