@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getTop100Companies } from '../services/companies'
+import ShareIcon from './ShareIcon'
 
 export default function Compare(props) {
   const [avgScore, setAvgScore] = useState()
@@ -82,6 +83,7 @@ export default function Compare(props) {
           Share your good work with your community!
         </span>
       </div>
+      <ShareIcon company={props.company} />
     </div>
     // SOCIAL SHARE COMPONENT HERE
   )

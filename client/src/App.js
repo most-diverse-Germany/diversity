@@ -14,6 +14,7 @@ import UserCompany from './components/UserCompany'
 import { getUserCompaniesFromUser } from './services/userCompanies'
 import { getTop100Companies } from './services/companies'
 import SearchBar from './components/SearchBar'
+import SectionChartTable from './components/Sections/SectionChartTable'
 
 const axios = require('axios')
 
@@ -21,20 +22,12 @@ function App(props) {
   const [companies, setCompanies] = useState([])
   const [user, setUser] = useState(props.user)
   const [userCompany, setUserCompany] = useState()
-  const [searchTerm, setSearchTerm] = useState('');
-  
+  const [searchTerm, setSearchTerm] = useState('')
+
   useEffect(() => {
     getTop100Companies()
       .then((top100) => setCompanies(top100))
       .catch((err) => console.log(err))
-    // axios
-    //   .get('/api/companies')
-    //   .then((response) => {
-    //     setCompanies(response.data)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
   }, [])
 
   useEffect(() => {
@@ -43,23 +36,31 @@ function App(props) {
 
   useEffect(() => {
     if (user) {
-      getUserCompaniesFromUser(user._id).then((userCompaniesFromDB) => {
-        // console.log(userCompaniesFromDB[0])
-        setUserCompany(userCompaniesFromDB[0])
-      })
-    } else {
-      // setUserCompany(null)
+      getUserCompaniesFromUser(user._id)
+        .then((userCompaniesFromDB) => {
+          // console.log(userCompaniesFromDB[0])
+          setUserCompany(userCompaniesFromDB[0])
+          // console.log(userCompany)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }, [user])
 
   // console.log(companies)
-  
 
   if (!companies) return <h1>Loading...</h1>
   return (
     <div className='App'>
       <Switch>
         <Route exact path='/'>
+          <section>
+            {userCompany && console.log(userCompany.company_name)}
+            {userCompany && <SectionChartTable company={userCompany} />}
+          </section>
+        </Route>
+        <Route exact path='/components'>
           <Logout user={user} setUser={setUser} />
           <Login user={user} setUser={setUser} />
           {!user && <Or />}
@@ -82,9 +83,8 @@ function App(props) {
           {userCompany && <UserCompany userCompany={userCompany} />}
 
           <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-          
-          <CompaniesList companies={companies} searchTerm={searchTerm} />
 
+          <CompaniesList companies={companies} searchTerm={searchTerm} />
         </Route>
         {/* is it possible to do id param with new syntax? */}
         {/* <Route exact path='/companies/:id' component={CompanyDetails} /> */}
@@ -97,6 +97,5 @@ function App(props) {
   )
   // }
 }
-
 
 export default App
