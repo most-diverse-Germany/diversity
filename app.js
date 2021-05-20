@@ -18,7 +18,7 @@ require('./config')(app)
 
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
-const DB_URL = 'mongodb://localhost/projector'
+DB_URL = process.env.MONGODB_URI
 
 app.use(
   session({
