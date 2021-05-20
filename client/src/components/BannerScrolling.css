@@ -4,6 +4,7 @@
 }
 
 .marquee {
+  z-index: 1;
   white-space: nowrap;
   overflow: hidden;
   position: absolute;

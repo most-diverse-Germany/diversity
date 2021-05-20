@@ -39,6 +39,7 @@ export default function HamburgerMenu(props) {
   }, [prevScrollPos, visible, handleScroll]);
 
   const navbarStyles = {
+    zIndex: '2',
     position: 'fixed',
     height: '50px',
     width: '50px',

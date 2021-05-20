@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { login } from '../services/auth'
+import { useHistory } from 'react-router-dom';
 
 export default function Login(props) {
+
+  const history = useHistory()
   //   const [firstName, setFirstName] = useState('')
   //   const [lastName, setLastName] = useState('')
   //   const [email, setEmail] = useState('')
@@ -41,6 +44,7 @@ export default function Login(props) {
   //   }
 
   const handleLogin = (e) => {
+    
     e.preventDefault()
     // console.log(email)
     login(logEmail, logPassword).then((response) => {
@@ -51,7 +55,7 @@ export default function Login(props) {
         clearAllFields()
         // we now put the user in the state of App.js
         props.setUser(response)
-        // props.history.push('/')
+        history.push('/profile')
       }
     })
   }
