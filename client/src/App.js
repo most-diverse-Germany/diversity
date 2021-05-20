@@ -21,7 +21,6 @@ import BannerIdea from './components/BannerIdea'
 import Spinner from './components/Spinner'
 import HeaderIdea from './components/HeaderIdea'
 
-
 const axios = require('axios')
 
 function App(props) {
@@ -61,14 +60,15 @@ function App(props) {
     <div className='App'>
       <Switch>
         <Route exact path='/'>
-           <HamburgerMenu />
+          <HamburgerMenu />
+          {/* <section></section> */}
           <section>
-            {userCompany && console.log(userCompany.company_name)}
+            {/* {userCompany && console.log(userCompany.company_name)} */}
             {userCompany && <SectionChartTable company={userCompany} />}
           </section>
         </Route>
         <Route exact path='/spinner'>
-          <Spinner color={"#954e8b"} />
+          <Spinner color={'#954e8b'} />
         </Route>
         <Route exact path='/header'>
           <HeaderIdea />
@@ -99,9 +99,9 @@ function App(props) {
           <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
           <CompaniesList companies={companies} searchTerm={searchTerm} />
           <BannerScrolling
-            text={"Diversity Equals Opportunity"}
-            color={"#56b39e"}
-            backgroundColor={"#f7a559"}
+            text={'Diversity Equals Opportunity'}
+            color={'#56b39e'}
+            backgroundColor={'#f7a559'}
           />
         </Route>
         {/* is it possible to do id param with new syntax? */}

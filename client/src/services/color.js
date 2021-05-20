@@ -138,4 +138,23 @@ function hexBrighterDarker(hex, percent, isDark, opacityHexCode) {
   }
 }
 
-export { hexBrighterDarker }
+const colors = [
+  {
+    color: '#8386D1',
+    backgroundColor: '#77F0D5',
+  },
+  {
+    color: '#679364',
+    backgroundColor: '#F7A559',
+  },
+  {
+    color: '#F7A559',
+    backgroundColor: '#DBED83',
+  },
+  {
+    color: '#E77BA2',
+    backgroundColor: '#FCE7CC',
+  },
+]
+
+export { hexBrighterDarker, colors }

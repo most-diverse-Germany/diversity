@@ -3,26 +3,11 @@ import Chart from '../Chart'
 import CompanyTable from '../CompanyTable'
 import BannerScrolling from '../BannerScrolling'
 import './SectionChartTable.css'
-// import Test from '../Test'
-
-const colors = [
-  {
-    color: '#8386D1',
-    backgroundColor: '#77F0D5',
-  },
-  {
-    color: '#679364',
-    backgroundColor: '#F7A559',
-  },
-  {
-    color: '#F7A559',
-    backgroundColor: '#DBED83',
-  },
-  {
-    color: '#E77BA2',
-    backgroundColor: '#FCE7CC',
-  },
-]
+import Button from '../Utilities/Button'
+import { colors } from '../../services/color'
+import arrowRight, {
+  ReactComponent as ArrowRight,
+} from '../../assets/arrow_right.svg'
 
 export default function SectionChartTable(props) {
   const [seconds, setSeconds] = useState(0)
@@ -47,12 +32,16 @@ export default function SectionChartTable(props) {
     }
   })
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setSeconds((seconds) => seconds + 1)
-  //   }, 1000)
-  //   return () => clearInterval(interval)
-  // }, [])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds + 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const clickHandler = () => {
+    console.log('helloClickHanlder')
+  }
 
   const currentColors = colors[seconds % 4]
 
@@ -86,18 +75,11 @@ export default function SectionChartTable(props) {
         </div> */}
         <div className='tw-w-full'>
           <BannerScrolling
-            text={'Diversity Equals Opportunity'}
-            color={'#8386D1'}
-            backgroundColor={'#77F0D5'}
-          />
-        </div>
-        {/* <div className='tw-w-full'>
-          <BannerScrolling
-            text={'diversity = opportunity'}
+            text={'DIVERSITY = OPPORTUNITY'}
             color={currentColors.color}
             backgroundColor={currentColors.backgroundColor}
           />
-        </div> */}
+        </div>
         {rotate}
         <div className='tw-w-1/2'>
           <p>
@@ -121,7 +103,27 @@ export default function SectionChartTable(props) {
           <CompanyTable company={props.company} colors={currentColors} />
         </div>
       </div>
+      {/* <ArrowRight className='tw-h-5 fill-current' /> */}
+      <Button
+        type='submit'
+        className={'active:tw-bg-opacity-80 tw-w-full md:tw-w-1/4'}
+        style={{ height: '50px' }}
+        text={'Button'}
+        color={'white'}
+        backgroundColor={'#77F0D5'}
+        fillColor={'#8386D1'}
+        symbol={<ArrowRight />}
+        onClick={clickHandler}
+      />
       {/* <Test props={props.company} /> */}
     </section>
   )
 }
+
+// props.text
+// props.height
+// props.width
+// props.color
+// props.backgroundColor
+// props.fillColor
+// props.symbol

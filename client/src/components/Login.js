@@ -51,7 +51,7 @@ export default function Login(props) {
         clearAllFields()
         // we now put the user in the state of App.js
         props.setUser(response)
-        // props.history.push('/')
+        // props.history.push('/profile')
       }
     })
   }
