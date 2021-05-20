@@ -116,8 +116,8 @@ function App(props) {
             </Route>
 
       {/* END OF PROFILE PAGE */}
-          
-//         </Route>
+
+                {/* </Route> */}
 
         <Route exact path='/spinner'>
           <Spinner color={"#954e8b"} />
