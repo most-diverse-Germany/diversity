@@ -20,6 +20,9 @@ import BannerScrolling from './components/BannerScrolling'
 import BannerIdea from './components/BannerIdea'
 import Spinner from './components/Spinner'
 import HeaderIdea from './components/HeaderIdea'
+import LogoNav from './components/LogoNav'
+import SvgImg from './components/SvgImg'
+import TrailImg from './components/TrailImg'
 
 
 const axios = require('axios')
@@ -56,17 +59,62 @@ function App(props) {
 
   // console.log(companies)
 
-  if (!companies) return <h1>Loading...</h1>
+  if (!companies) return ( <Spinner /> )
   return (
     <div className='App'>
       <Switch>
         <Route exact path='/'>
-           <HamburgerMenu />
+          <HamburgerMenu />
+            <section style={{backgroundColor: '#77F0D5'}} className="tw-pb-12">
+            <nav className="nav">
+              <LogoNav />
+              <button>(Sign Up Button)</button>
+            </nav>
+            <div className="header">
+                <h1 className='cta-1 tw-text-2xl md:tw-text-6xl' style={{color: '#8386D1'}}>
+                TOP 100 MOST<br />
+                DIVERSE GERMANY</h1>
+                <h2 className="tw-pt-5">(animated tagline)</h2>
+            </div>
+            </section>
+            <TrailImg />
+            <SvgImg />
+          
+            <section style={{backgroundColor:"#5e62d1"}}>
+            <SearchBar
+              setSearchTerm={setSearchTerm}
+              searchTerm={searchTerm}
+              color={'#67ecc8'}
+              backgroundColor={"#5e62d1"}
+            />
+              <CompaniesList companies={companies} searchTerm={searchTerm} />
+            </section>
+
+            <section>
+              <Signup user={user} setUser={setUser} />
+              {!user && <Or />}
+              <Login user={user} setUser={setUser} />
+            </section>
+      </Route>
+      {/* END OF HOMEPAGE */}
+       
+       {/* START OF PROFILE PAGE */}
+      <Route exact path='/profile'>
+        <HamburgerMenu />
           <section>
-            {userCompany && console.log(userCompany.company_name)}
             {userCompany && <SectionChartTable company={userCompany} />}
           </section>
-        </Route>
+          <Logout user={user} setUser={setUser} />
+          {user && <EditProfile user={user} setUser={setUser} />}
+          {user && ( <RegisterUserCompany
+              userCompany={userCompany}
+              setUserCompany={setUserCompany}
+            />
+            )}
+            </Route>
+
+      {/* END OF PROFILE PAGE */}
+
         <Route exact path='/spinner'>
           <Spinner color={"#954e8b"} />
         </Route>

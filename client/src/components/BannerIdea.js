@@ -1,14 +1,14 @@
 import Marquee, { Motion, randomIntFromInterval } from "react-marquee-slider";
 
 
-export default function BannerIdea() {
+export default function BannerIdea(props) {
 
   const array = ["Diversity", "Opportunity", "Growth", "Equality", "Understanding", "Unity", "Possibility", "Compassion"]
 
   return (
 
     
-<div style={{ height: "350px"}}>
+<div style={{ height: "300px", backgroundColor: props.color}}>
   <Marquee velocity={20} minScale={0.7} resetAfterTries={200} scatterRandomly>
     {array.map((id) => (
       <Motion
@@ -21,7 +21,7 @@ export default function BannerIdea() {
         <div
           style={{
             color: "#954e8b",
-            textShadow: "0px 5px 10px #f7a559",
+            // textShadow: props.color,
             // padding: "2rem",
             // width: "auto",
             // height: "auto",
@@ -29,7 +29,7 @@ export default function BannerIdea() {
             // backgroundColor: "white",
             textAlign: "center",
             lineHeight: "50px",
-            fontSize: "1rem"
+            fontSize: "2rem"
           }}
         >
           {id}

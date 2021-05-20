@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { signup } from '../services/auth'
+import { useHistory } from 'react-router-dom';
 
 export default function Signup(props) {
+  const history = useHistory()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -28,8 +30,7 @@ export default function Signup(props) {
         clearAllFields()
         // we now put the user in the state of App.js
         props.setUser(response)
-
-        // props.history.push('/xxx')
+        history.push('/profile')
       }
     })
   }
