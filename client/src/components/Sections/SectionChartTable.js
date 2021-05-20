@@ -47,12 +47,12 @@ export default function SectionChartTable(props) {
     }
   })
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setSeconds((seconds) => seconds + 1)
-  //   }, 1000)
-  //   return () => clearInterval(interval)
-  // }, [])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds + 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   const currentColors = colors[seconds % 4]
 
@@ -77,7 +77,7 @@ export default function SectionChartTable(props) {
         <p className='cta-3 '>Lorem ipsum dolor sit amet.</p>
         <div
           ref={scrollTrigerElement}
-          className='cta-1 tw-text-2xl md:tw-text-6xl'
+          className='cta-1 tw-mb-12 tw-text-2xl md:tw-text-6xl'
         >
           THE WORLD IS <br />A COLOURFUL PLACE
         </div>
@@ -99,7 +99,7 @@ export default function SectionChartTable(props) {
           />
         </div> */}
         {rotate}
-        <div className='tw-w-1/2'>
+        <div className='tw-mt-12 tw-w-1/2'>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi ullam
             necessitatibus quam atque earum numquam incidunt similique eius
