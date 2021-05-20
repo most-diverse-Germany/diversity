@@ -1,6 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ad183f99.chunk.css",
+<<<<<<< HEAD
     "main.js": "/static/js/main.f5913429.chunk.js",
     "main.js.map": "/static/js/main.f5913429.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.28aca5a7.js",
@@ -8,18 +9,37 @@
     "static/css/2.8c0c0181.chunk.css": "/static/css/2.8c0c0181.chunk.css",
     "static/js/2.0ec8ce93.chunk.js": "/static/js/2.0ec8ce93.chunk.js",
     "static/js/2.0ec8ce93.chunk.js.map": "/static/js/2.0ec8ce93.chunk.js.map",
+=======
+    "main.js": "/static/js/main.163e35cc.chunk.js",
+    "main.js.map": "/static/js/main.163e35cc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.28aca5a7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.28aca5a7.js.map",
+    "static/css/2.8c0c0181.chunk.css": "/static/css/2.8c0c0181.chunk.css",
+    "static/js/2.8b8f43c9.chunk.js": "/static/js/2.8b8f43c9.chunk.js",
+    "static/js/2.8b8f43c9.chunk.js.map": "/static/js/2.8b8f43c9.chunk.js.map",
+>>>>>>> 261fb8e62bc3fa3d634d2239d910db2e16389b32
     "static/js/3.0a5dd7db.chunk.js": "/static/js/3.0a5dd7db.chunk.js",
     "static/js/3.0a5dd7db.chunk.js.map": "/static/js/3.0a5dd7db.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.8c0c0181.chunk.css.map": "/static/css/2.8c0c0181.chunk.css.map",
     "static/css/main.ad183f99.chunk.css.map": "/static/css/main.ad183f99.chunk.css.map",
+<<<<<<< HEAD
     "static/js/2.0ec8ce93.chunk.js.LICENSE.txt": "/static/js/2.0ec8ce93.chunk.js.LICENSE.txt"
+=======
+    "static/js/2.8b8f43c9.chunk.js.LICENSE.txt": "/static/js/2.8b8f43c9.chunk.js.LICENSE.txt"
+>>>>>>> 261fb8e62bc3fa3d634d2239d910db2e16389b32
   },
   "entrypoints": [
     "static/js/runtime-main.28aca5a7.js",
     "static/css/2.8c0c0181.chunk.css",
+<<<<<<< HEAD
     "static/js/2.0ec8ce93.chunk.js",
     "static/css/main.ad183f99.chunk.css",
     "static/js/main.f5913429.chunk.js"
+=======
+    "static/js/2.8b8f43c9.chunk.js",
+    "static/css/main.ad183f99.chunk.css",
+    "static/js/main.163e35cc.chunk.js"
+>>>>>>> 261fb8e62bc3fa3d634d2239d910db2e16389b32
   ]
 }
