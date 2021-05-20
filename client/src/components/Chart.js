@@ -4,7 +4,7 @@ import { hexBrighterDarker } from '../services/color'
 
 export default function Chart(props) {
   const [chart, setChart] = useState(null)
-  console.log(props.company.diversity_total)
+  // console.log(props.company.diversity_total)
 
   const initChart = {
     chartData: {
@@ -17,18 +17,18 @@ export default function Chart(props) {
             props.company.opportunity_score,
             // 1, 2, 3,
           ],
-          // backgroundColor: ['#8386D1', '#7B7EC2', '#6A6CA9'],
-          backgroundColor: [
-            hexBrighterDarker(props.colors.color, 50, false, '4D'),
-            hexBrighterDarker(props.colors.color, 25, true, '4D'),
-            hexBrighterDarker(props.colors.color, 0, true, '4D'),
-          ],
-          // hoverBackgroundColor: ['#555BF9', '#4F55DD', '#494DB4'],
-          hoverBackgroundColor: [
-            hexBrighterDarker(props.colors.color, 10, false),
-            hexBrighterDarker(props.colors.color, 5, true),
-            hexBrighterDarker(props.colors.color, 0, true),
-          ],
+          backgroundColor: ['#8386D1', '#7B7EC2', '#6A6CA9'],
+          // backgroundColor: [
+          //   hexBrighterDarker(props.colors[0].color, 50, false, '4D'),
+          //   hexBrighterDarker(props.colors[0].color, 25, true, '4D'),
+          //   hexBrighterDarker(props.colors[0].color, 0, true, '4D'),
+          // ],
+          hoverBackgroundColor: ['#555BF9', '#4F55DD', '#494DB4'],
+          // hoverBackgroundColor: [
+          //   hexBrighterDarker(props.colors[0].color, 10, false),
+          //   hexBrighterDarker(props.colors[0].color, 5, true),
+          //   hexBrighterDarker(props.colors[0].color, 0, true),
+          // ],
 
           borderWidth: 0,
           cutoutPercentage: 10,

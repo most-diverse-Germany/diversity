@@ -20,6 +20,7 @@ import BannerScrolling from './components/BannerScrolling'
 import BannerIdea from './components/BannerIdea'
 import Spinner from './components/Spinner'
 import HeaderIdea from './components/HeaderIdea'
+import Faq from './components/Faq'
 
 
 const axios = require('axios')
@@ -66,6 +67,8 @@ function App(props) {
             {userCompany && console.log(userCompany.company_name)}
             {userCompany && <SectionChartTable company={userCompany} />}
           </section>
+
+          <Faq />
         </Route>
         <Route exact path='/spinner'>
           <Spinner color={"#954e8b"} />
