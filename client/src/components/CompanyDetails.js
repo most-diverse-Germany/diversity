@@ -12,7 +12,25 @@ export default class CompanyDetails extends Component {
     this.state = {
       company: {},
       diversityScore: {},
-      dataFetched: false
+      dataFetched: false,
+      colors: [
+        {
+          color: '#8386D1',
+          backgroundColor: '#77F0D5',
+        },
+        {
+          color: '#679364',
+          backgroundColor: '#F7A559',
+        },
+        {
+          color: '#F7A559',
+          backgroundColor: '#DBED83',
+        },
+        {
+          color: '#E77BA2',
+          backgroundColor: '#FCE7CC',
+        },
+      ]
     };
   }
 
@@ -26,7 +44,7 @@ export default class CompanyDetails extends Component {
         dataFetched: true
         // this unsets the flag when the data is available
         // dataRequested: false
-      })
+      });
     })
     // .catch(err => {
     //   console.log(err);
@@ -39,17 +57,17 @@ export default class CompanyDetails extends Component {
     //     })
     //   })
       .catch((err) => {
-        console.log(err)
-        if (err.response.status === 404) {
+        console.log(err);
+        if (err.status === 404) {
           this.setState({
             error: 'Not found 🤷‍♀️🤷‍♂️',
-          })
+          });
         }
       })
   }
 
   componentDidMount() {
-    this.getData()
+    this.getData();
   }
 
 
@@ -60,11 +78,11 @@ export default class CompanyDetails extends Component {
         <>
           <div className='tw-mt-8'>
             <h1> {this.state.company.company_name}</h1>
-            <Chart company={this.state.company} />
+            <Chart colors={this.state.colors} company={this.state.company} />
           </div>
 
           <div>
-            <CompanyTable company={this.state.company} />
+            <CompanyTable colors={this.state.colors} company={this.state.company} />
           </div>
 
           <div>

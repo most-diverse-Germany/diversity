@@ -23,6 +23,8 @@ import HeaderIdea from './components/HeaderIdea'
 import LogoNav from './components/LogoNav'
 import SvgImg from './components/SvgImg'
 import TrailImg from './components/TrailImg'
+import Faq from './components/Faq'
+
 
 
 const axios = require('axios')
@@ -114,6 +116,8 @@ function App(props) {
             </Route>
 
       {/* END OF PROFILE PAGE */}
+          
+//         </Route>
 
         <Route exact path='/spinner'>
           <Spinner color={"#954e8b"} />
