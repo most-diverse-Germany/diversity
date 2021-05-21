@@ -18,7 +18,7 @@ require('./config')(app)
 
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
-const DB_URL = 'mongodb://localhost/projector'
+const DB_URL = process.env.MONGODB_URI // <- this is correct: ATTENTION! must be changed from the ironlauncher template
 
 app.use(
   session({
