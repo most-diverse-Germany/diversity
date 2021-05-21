@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.2675aae0.chunk.css",
-    "main.js": "/static/js/main.f802d40a.chunk.js",
-    "main.js.map": "/static/js/main.f802d40a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.3bbffbc8.js",
-    "runtime-main.js.map": "/static/js/runtime-main.3bbffbc8.js.map",
+    "main.css": "/static/css/main.a6f2191f.chunk.css",
+    "main.js": "/static/js/main.219d050d.chunk.js",
+    "main.js.map": "/static/js/main.219d050d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.28aca5a7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.28aca5a7.js.map",
     "static/css/2.8c0c0181.chunk.css": "/static/css/2.8c0c0181.chunk.css",
-    "static/js/2.3d019399.chunk.js": "/static/js/2.3d019399.chunk.js",
-    "static/js/2.3d019399.chunk.js.map": "/static/js/2.3d019399.chunk.js.map",
-    "static/js/3.f8218cb2.chunk.js": "/static/js/3.f8218cb2.chunk.js",
-    "static/js/3.f8218cb2.chunk.js.map": "/static/js/3.f8218cb2.chunk.js.map",
+    "static/js/2.be3f566f.chunk.js": "/static/js/2.be3f566f.chunk.js",
+    "static/js/2.be3f566f.chunk.js.map": "/static/js/2.be3f566f.chunk.js.map",
+    "static/js/3.0a5dd7db.chunk.js": "/static/js/3.0a5dd7db.chunk.js",
+    "static/js/3.0a5dd7db.chunk.js.map": "/static/js/3.0a5dd7db.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.8c0c0181.chunk.css.map": "/static/css/2.8c0c0181.chunk.css.map",
-    "static/css/main.2675aae0.chunk.css.map": "/static/css/main.2675aae0.chunk.css.map",
-    "static/js/2.3d019399.chunk.js.LICENSE.txt": "/static/js/2.3d019399.chunk.js.LICENSE.txt",
-    "static/media/arrow_right.45fffbb5.svg": "/static/media/arrow_right.45fffbb5.svg"
+    "static/css/main.a6f2191f.chunk.css.map": "/static/css/main.a6f2191f.chunk.css.map",
+    "static/js/2.be3f566f.chunk.js.LICENSE.txt": "/static/js/2.be3f566f.chunk.js.LICENSE.txt",
+    "static/media/arrow_right.12c3b844.svg": "/static/media/arrow_right.12c3b844.svg",
+    "static/media/lady-bg-pink.7216c3f5.png": "/static/media/lady-bg-pink.7216c3f5.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.3bbffbc8.js",
+    "static/js/runtime-main.28aca5a7.js",
     "static/css/2.8c0c0181.chunk.css",
-    "static/js/2.3d019399.chunk.js",
-    "static/css/main.2675aae0.chunk.css",
-    "static/js/main.f802d40a.chunk.js"
+    "static/js/2.be3f566f.chunk.js",
+    "static/css/main.a6f2191f.chunk.css",
+    "static/js/main.219d050d.chunk.js"
   ]
 }
