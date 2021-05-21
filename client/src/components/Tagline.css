@@ -1,0 +1,14 @@
+.mainImgPosition {
+  transform: translate(12vw, 18vw);
+}
+
+@media only screen and (max-width: 767px) {
+  .mainImgPosition {
+    transform: translate(26vw, -17vw);
+  }
+}
+/* @media only screen and (max-width: 480px) {
+  .mainImgPosition {
+    transform: translate(26vw, -17vw);
+  }
+} */

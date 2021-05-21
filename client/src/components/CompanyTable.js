@@ -8,7 +8,6 @@ export default function CompanyTable(props) {
       <div className='tw-flex tw-items-center tw-justify-center tw-border-current'>
         <div className='tw-container tw-overflow-auto'>
           <table className='tw-relative tw-w-full'>
-            {/* <tbody className='tw-divide-y tw-divide-indigo-400'> */}
             <tbody>
               <tr
                 className='hover:tw-bg-gray-100 hover:tw-bg-opacity-30'

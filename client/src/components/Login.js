@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import { login } from '../services/auth'
+import Button from '../components/Utilities/Button'
 
 export default function Login(props) {
-  //   const [firstName, setFirstName] = useState('')
-  //   const [lastName, setLastName] = useState('')
-  //   const [email, setEmail] = useState('')
-  //   const [company, setCompany] = useState('')
-  //   const [password, setPassword] = useState('')
   const [message, setMessage] = useState()
 
   // log-in states
@@ -15,62 +11,39 @@ export default function Login(props) {
 
   const clearAllFields = () => {
     setMessage('')
-    // setFirstName('')
-    // setLastName('')
-    // setEmail('')
-    // setCompany('')
-    // setPassword('')
     setLogEmail('')
     setLogPassword('')
   }
 
-  //   const handleSignup = (e) => {
-  //     e.preventDefault()
-  //     signup(email, firstName, lastName, company, password).then((response) => {
-  //       if (response.message) {
-  //         console.log(response)
-  //         setMessage(response.message)
-  //       } else {
-  //         clearAllFields()
-  //         // we now put the user in the state of App.js
-  //         props.setUser(response)
-
-  //         // props.history.push('/xxx')
-  //       }
-  //     })
-  //   }
-
   const handleLogin = (e) => {
     e.preventDefault()
-    // console.log(email)
     login(logEmail, logPassword).then((response) => {
       if (response.message) {
         console.log(response)
         setMessage(response.message)
       } else {
         clearAllFields()
-        // we now put the user in the state of App.js
         props.setUser(response)
-        // props.history.push('/profile')
       }
     })
   }
 
   const style = {
-    input: 'tw-text-blue-600 tw-border tw-border-blue-600 tw-p-1',
-    label: 'tw-text-blue-600 tw-text-xs tw-text-left tw-leading-loose',
+    input: ' tw-border tw-p-1',
+    label: ' tw-text-xs tw-text-left tw-leading-loose',
   }
 
   if (props.user) return <></>
   return (
     <div>
-      <div id='login' className='tw-w-full md:tw-w-4/12 tw-px-5'>
-        <h1 className='tw-text-blue-600 tw-text-left'>Login</h1>
+      <div id='login' className='tw-w-full  tw-px-5'>
+        <h1 className=' tw-text-left'>Login</h1>
         <form className='tw-flex tw-flex-col' onSubmit={handleLogin}>
           <label className={style.label} htmlFor='email'>
             Email
           </label>
           <input
+            style={{ backgroundColor: '#8386d1', borderColor: '#77F0D5' }}
             className={style.input}
             type='text'
             name='email'
@@ -83,6 +56,7 @@ export default function Login(props) {
             Password
           </label>
           <input
+            style={{ backgroundColor: '#8386d1', borderColor: '#77F0D5' }}
             className={style.input}
             type='password'
             id='password'
@@ -90,14 +64,20 @@ export default function Login(props) {
             placeholder=''
             value={logPassword}
             onChange={(e) => setLogPassword(e.target.value)}
+            backgroundColor={props.colors.backgroundColor}
             required
           />
-          <button
-            className='tw-bg-yellow-500 tw-text-blue-600 tw-py-5 tw-mt-5 md:tw-w-1/2'
+          <Button
             type='submit'
-          >
-            Login
-          </button>
+            className={'active:tw-bg-opacity-80 tw-w-full '}
+            style={{ height: '50px' }}
+            text={'Login'}
+            color={'white'}
+            backgroundColor={'#77F0D5'}
+            fillColor={'#E0E2EE'} //
+            // symbol={<ArrowRight />}
+            // onClick={this.clickHandler}
+          />
 
           {message && <h3>{message}</h3>}
         </form>

@@ -26,9 +26,7 @@ export default function Compare(props) {
   }
 
   useEffect(() => {
-    // console.log('hello')
     getTop100Companies().then((companies) => {
-      //   console.log({ companies })
       const score =
         Math.floor(
           ((props.company.diversity_total +

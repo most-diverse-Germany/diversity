@@ -1,4 +1,5 @@
 .bannerWrapper {
+  z-index: 1;
   transform: translateY(-60px);
   padding: 0px;
 }
@@ -7,14 +8,14 @@
   white-space: nowrap;
   overflow: hidden;
   position: absolute;
-  width: 100%
+  width: 100%;
 }
 
 .marquee span {
   display: inline-block;
   padding-left: 100%;
   animation: marquee 10s linear infinite;
-  width: 100%
+  width: 100%;
 }
 
 .marquee2 span {
@@ -31,7 +32,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .marquee h1{
+  .marquee h1 {
     font-size: 20px;
   }
 }

@@ -2,15 +2,7 @@ import React, { useState } from 'react'
 import useMeasure from 'react-use-measure'
 import { useSpring, animated } from 'react-spring'
 
-// props.text
-// props.twHeight
-// props.twWidth
-// props.color
-// props.backgroundColor
-// props.fillColor
-// props.symbol
-
-export default function TransButton(props) {
+export default function Button(props) {
   const [open, toggle] = useState(false)
   const [ref, { height }] = useMeasure()
   // const buttonProp = useSpring({ height: open ? height : 0 })
@@ -90,16 +82,18 @@ export default function TransButton(props) {
             }}
           >
             {props.text}
-            <svg
-              style={{
-                height: '30%',
-                width: '20%',
-                textAlign: 'left',
-                fill: 'currentcolor',
-              }}
-            >
-              {props.symbol}
-            </svg>
+            {props.symbol && (
+              <svg
+                style={{
+                  height: '30%',
+                  width: '20%',
+                  textAlign: 'left',
+                  fill: 'currentcolor',
+                }}
+              >
+                {props.symbol}
+              </svg>
+            )}
           </animated.div>
         </div>
       </div>

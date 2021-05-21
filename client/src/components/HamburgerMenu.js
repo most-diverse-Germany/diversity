@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Cross as Hamburger } from 'hamburger-react'
 import './styles.module.css'
-//import { debounce } from './helper';
-import { useSpring, animated } from 'react-spring'
 import Menu from './Menu'
 
 export default function HamburgerMenu(props) {
@@ -33,16 +31,14 @@ export default function HamburgerMenu(props) {
   }, [prevScrollPos, visible, handleScroll])
 
   const navbarStyles = {
+    zIndex: '100',
     position: 'fixed',
-    // height: isHover ? '54px' : '50px',
-    // width: isHover ? '54px' : '50px',
     height: '50px',
     width: '50px',
     transition: 'top 0.7s',
     display: 'flex',
     backgroundColor: '#ffffff',
     borderRadius: '50px',
-    // borderRadius: isHover ? '54px' : '50px',
   }
 
   const toggleMenu = () => {
@@ -51,7 +47,6 @@ export default function HamburgerMenu(props) {
 
   const toggleHover = () => {
     setIsHover(true)
-    console.log('HOVERED')
   }
 
   return (
@@ -60,18 +55,15 @@ export default function HamburgerMenu(props) {
         id='hamburger-button'
         style={{
           ...navbarStyles,
-          zIndex: 300,
+          // zIndex: 300,
           position: 'absolute',
-          borderWidth: '20px',
-          // left: isHover ? `calc(50vw - 29px)` : `calc(50vw - 25px)`,
+          transform: isHover ? 'scale(1.2)' : 'none',
+          transition: 'transform 0.3s',
           left: `calc(50vw - 25px)`,
-          // top: isHover ? '100px' : '50px',
-          // top: visible ? '3vh' : '-60px',
-          top: '3vh',
-          // top: visible ? (isHover ? `calc(3vh-4px)` : `3vh`) : '-60px',
+          // top: '50px',
+          top: visible ? '3vh' : '-60px',
         }}
       >
-        {/* <button onClick={toggleMenu}> */}
         <button
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
@@ -79,9 +71,9 @@ export default function HamburgerMenu(props) {
         >
           <Hamburger
             rounded
-            color='#FCE7CC'
+            color='black'
             toggled={isOpen}
-            size={35}
+            size={20}
             distance='md'
             toggle={setOpen}
             duration={1}

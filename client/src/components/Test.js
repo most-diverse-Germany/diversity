@@ -5,7 +5,6 @@ export default function Test(props) {
 
   useEffect(() => {
     setTestCounter((testCounter) => testCounter + 1)
-    // console.log(props)
   }, [props])
 
   return <div>{testCounter}</div>

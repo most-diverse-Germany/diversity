@@ -155,6 +155,15 @@ const colors = [
     color: '#E77BA2',
     backgroundColor: '#FCE7CC',
   },
+  // more
+  {
+    color: '#7788C3',
+    backgroundColor: '#EE9CB2',
+  },
+  {
+    color: '#816DFB',
+    backgroundColor: '#E0E2EE',
+  },
 ]
 
 export { hexBrighterDarker, colors }

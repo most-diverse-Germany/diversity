@@ -17,9 +17,13 @@ import SearchBar from './components/SearchBar'
 import HamburgerMenu from './components/HamburgerMenu'
 import SectionChartTable from './components/Sections/SectionChartTable'
 import BannerScrolling from './components/BannerScrolling'
-import BannerIdea from './components/BannerIdea'
 import Spinner from './components/Spinner'
 import HeaderIdea from './components/HeaderIdea'
+import { colors } from './services/color'
+import Navbar from './components/Navbar'
+import Tagline from './components/Tagline'
+import SectionCompanyList from './components/Sections/SectionCompanyList'
+import SectionSignUpLogin from './components/Sections/SectionSignUpLogin'
 
 const axios = require('axios')
 
@@ -43,9 +47,7 @@ function App(props) {
     if (user) {
       getUserCompaniesFromUser(user._id)
         .then((userCompaniesFromDB) => {
-          // console.log(userCompaniesFromDB[0])
           setUserCompany(userCompaniesFromDB[0])
-          // console.log(userCompany)
         })
         .catch((err) => {
           console.log(err)
@@ -53,66 +55,76 @@ function App(props) {
     }
   }, [user])
 
-  // console.log(companies)
+  if (!companies) return <Spinner color={'F7A559'} />
 
-  if (!companies) return <h1>Loading...</h1>
-  return (
-    <div className='App'>
-      <Switch>
-        <Route exact path='/'>
-          <HamburgerMenu />
-          {/* <section></section> */}
-          <section>
-            {/* {userCompany && console.log(userCompany.company_name)} */}
-            {userCompany && <SectionChartTable company={userCompany} />}
-          </section>
-        </Route>
-        <Route exact path='/spinner'>
-          <Spinner color={'#954e8b'} />
-        </Route>
-        <Route exact path='/header'>
-          <HeaderIdea />
-        </Route>
-        <Route exact path='/components'>
-          <Logout user={user} setUser={setUser} />
-          <Login user={user} setUser={setUser} />
-          {!user && <Or />}
-          <Signup user={user} setUser={setUser} />
+  if (colors)
+    return (
+      <div className='App'>
+        <HamburgerMenu />
+        <Switch>
+          <Route exact path='/'>
+            <section
+              style={{
+                backgroundColor: colors[4].color,
+                color: colors[4].backgroundColor,
+                height: '90vh',
+              }}
+            >
+              <Navbar />
+              <Tagline />
+            </section>
+            <section
+              style={{
+                backgroundColor: colors[1].backgroundColor,
+                color: colors[1].color,
+              }}
+            >
+              <SectionCompanyList
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                companies={companies}
+              />
+            </section>
+            <section
+              style={{
+                backgroundColor: colors[0].color,
+                color: colors[0].backgroundColor,
+              }}
+            >
+              {
+                <SectionSignUpLogin
+                  user={user}
+                  setUser={setUser}
+                  userCompany={userCompany}
+                  setUserCompany={setUserCompany}
+                />
+              }
+            </section>
+            <section
+              style={{
+                backgroundColor: colors[1].backgroundColor,
+                color: colors[1].color,
+              }}
+            ></section>
+            <section
+              style={{
+                backgroundColor: colors[1].backgroundColor,
+                color: colors[1].color,
+              }}
+            >
+              {userCompany && user && (
+                <SectionChartTable company={userCompany} />
+              )}
+            </section>
+          </Route>
+          <Route exact path='/companies/:id' component={CompanyDetails} />
 
-          {/* <ProtectedRoute
-          path='/account/edit'
-          user={user}
-          setUser={setUser}
-          component={EditProfile}
-          redirectPath='/'
-        /> */}
-          {user && <EditProfile user={user} setUser={setUser} />}
-          {user && (
-            <RegisterUserCompany
-              userCompany={userCompany}
-              setUserCompany={setUserCompany}
-            />
-          )}
-          {userCompany && <UserCompany userCompany={userCompany} />}
-          <BannerIdea />
-          {/* <Banner2 /> */}
-          <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-          <CompaniesList companies={companies} searchTerm={searchTerm} />
-          <BannerScrolling
-            text={'Diversity Equals Opportunity'}
-            color={'#56b39e'}
-            backgroundColor={'#f7a559'}
-          />
-        </Route>
-        {/* is it possible to do id param with new syntax? */}
-        {/* <Route exact path='/companies/:id' component={CompanyDetails} /> */}
-        <Route exact path='/styleguide'>
-          <Styleguide />
-        </Route>
-        <Route exact path='/companies/:id' component={CompanyDetails} />
-      </Switch>
-    </div>
-  )
+          <Route exact path='/styleguide'>
+            <Styleguide />
+          </Route>
+        </Switch>
+      </div>
+    )
   // }
 }
 

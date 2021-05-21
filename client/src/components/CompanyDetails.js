@@ -4,6 +4,7 @@ import Chart from './Chart.js'
 import CompanyTable from './CompanyTable.js'
 import ShareIcon from './ShareIcon.js'
 import { colors } from '../services/color'
+import BannerScrolling from './BannerScrolling'
 
 export default class CompanyDetails extends Component {
   constructor(props) {
@@ -20,14 +21,12 @@ export default class CompanyDetails extends Component {
     axios
       .get(`/api/companies/${this.props.match.params.id}`)
       .then((response) => {
-        console.log(response.data)
         this.setState({
           company: response.data,
           dataFetched: true,
         })
       })
       .catch((err) => {
-        console.log(err)
         if (err.response.status === 404) {
           this.setState({
             error: 'Not found 🤷‍♀️🤷‍♂️',
@@ -47,26 +46,26 @@ export default class CompanyDetails extends Component {
     if (!this.state.dataFetched || !this.state.colors)
       return <div>Loading...</div>
     if (this.state.dataFetched && this.state.colors) {
-      console.log('CompanyDetails', this.state.company)
       return (
-        <>
-          <div>hello</div>
-          <div className='tw-mt-8'>
-            <h1> {this.state.company.company_name}</h1>
-            <Chart company={this.state.company} colors={this.state.colors[0]} />
+        <div
+          class='company-details tw-pt-20'
+          style={{ backgroundColor: colors[0].backgroundColor }}
+        >
+          <div className=''>
+            <h1 className='tw-py-8 tw-uppercase'>
+              {' '}
+              {this.state.company.company_name}
+            </h1>
+            <Chart company={this.state.company} colors={colors[0]} />
           </div>
 
           <div>
-            <CompanyTable
-              company={this.state.company}
-              colors={this.state.colors[0]}
-            />
+            <CompanyTable company={this.state.company} colors={colors[0]} />
           </div>
-
           <div>
             <ShareIcon company={this.state.company} />
           </div>
-        </>
+        </div>
       )
     } else {
       return null

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Button from '../components/Utilities/Button'
 import { update } from '../services/users'
 
 export default function Editprofile(props) {
@@ -46,7 +47,6 @@ export default function Editprofile(props) {
           setMessage(response.message)
         } else {
           setPassword('')
-          // we now put the user in the state of App.js
           props.setUser(response)
         }
       }
@@ -54,19 +54,20 @@ export default function Editprofile(props) {
   }
 
   const style = {
-    input: 'tw-text-blue-600 tw-border tw-border-blue-600 tw-p-1',
-    label: 'tw-text-blue-600 tw-text-xs tw-text-left tw-leading-loose',
+    input: ' tw-border  tw-p-1',
+    label: ' tw-text-xs tw-text-left tw-leading-loose',
   }
 
   return (
     <>
-      <div id='editProfile' className='tw-w-full md:tw-w-4/12 tw-px-5'>
-        <h1 className='tw-text-blue-600 tw-text-left'>Edit your profile</h1>
+      <div id='editProfile' className='tw-w-full tw-px-5'>
+        <h1 className=' tw-text-left'>Edit your profile</h1>
         <form className='tw-flex tw-flex-col' onSubmit={handleEdit}>
           <label className={style.label} htmlFor='firstName'>
             First Name
           </label>
           <input
+            style={{ backgroundColor: '#8386d1', borderColor: '#77F0D5' }}
             className={style.input}
             type='text'
             name='firstName'
@@ -79,6 +80,7 @@ export default function Editprofile(props) {
             Last Name
           </label>
           <input
+            style={{ backgroundColor: '#8386d1', borderColor: '#77F0D5' }}
             className={style.input}
             type='text'
             name='lastName'
@@ -91,6 +93,7 @@ export default function Editprofile(props) {
             Email
           </label>
           <input
+            style={{ backgroundColor: '#8386d1', borderColor: '#77F0D5' }}
             className={style.input}
             type='text'
             name='email'
@@ -103,6 +106,7 @@ export default function Editprofile(props) {
             Company
           </label>
           <input
+            style={{ backgroundColor: '#8386d1', borderColor: '#77F0D5' }}
             className={style.input}
             type='text'
             name='company'
@@ -114,6 +118,7 @@ export default function Editprofile(props) {
             Password
           </label>
           <input
+            style={{ backgroundColor: '#8386d1', borderColor: '#77F0D5' }}
             className={style.input}
             type='password'
             id='password'
@@ -123,12 +128,18 @@ export default function Editprofile(props) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button
-            className='tw-bg-yellow-500 tw-text-blue-600 tw-py-5 tw-mt-5 md:tw-w-1/2'
+
+          <Button
             type='submit'
-          >
-            Save Edit
-          </button>
+            className={'active:tw-bg-opacity-80 tw-w-full '}
+            style={{ height: '50px' }}
+            text={'Save Edit'}
+            color={'white'}
+            backgroundColor={'#77F0D5'}
+            fillColor={'#E0E2EE'} //
+            // symbol={<ArrowRight />}
+            // onClick={this.clickHandler}
+          />
           {message && <h3>{message}</h3>}
         </form>
       </div>
